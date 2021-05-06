@@ -3,12 +3,24 @@ package com.exemple.CellarApp.Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Employe")
-public class Employe {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Employe extends User {
     private String login;
 
     private String password;
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

@@ -3,11 +3,11 @@ package com.exemple.CellarApp.Model;
 import com.exemple.CellarApp.Service.listConverter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "Castel")
-public class Castel {
+public class Castel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

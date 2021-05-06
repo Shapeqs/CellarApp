@@ -1,13 +1,12 @@
 package com.exemple.CellarApp.Model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Table(name = "Bottle")
-public class Bottle {
+public class Bottle implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String name;
     private String infos;
@@ -17,9 +16,11 @@ public class Bottle {
 
     public Bottle() {}
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
+
+    public void setId(Integer id) {this.id = id;}
 
     public String getName() {
         return name;
@@ -59,5 +60,17 @@ public class Bottle {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Bottle{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", infos='" + infos + '\'' +
+                ", year=" + year +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
     }
 }
