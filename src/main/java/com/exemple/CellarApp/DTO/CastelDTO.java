@@ -1,16 +1,18 @@
-package com.exemple.CellarApp.Model;
+package com.exemple.CellarApp.DTO;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.io.Serializable;
 
-@Entity
-public class Castel implements Serializable {
-    @Id
+public class CastelDTO implements Serializable {
     private Integer id;
     private String name;
 
-    public Castel() {}
+    public CastelDTO() {
+    }
+
+    public CastelDTO(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;
@@ -30,7 +32,7 @@ public class Castel implements Serializable {
 
     @Override
     public String toString() {
-        return "Castel{" +
+        return "CastelDAO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

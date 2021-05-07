@@ -3,6 +3,7 @@ package com.exemple.CellarApp;
 public enum URLs {
     Bottle("Bottles.json"),
     Castel("Castels.json"),
+    Naming("Naming.json"),
     Employe("Employes.json"),
     User("Users.json");
 

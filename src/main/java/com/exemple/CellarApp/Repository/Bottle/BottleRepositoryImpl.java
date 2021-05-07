@@ -1,5 +1,6 @@
 package com.exemple.CellarApp.Repository.Bottle;
 
+import com.exemple.CellarApp.DTO.BottleDTO;
 import com.exemple.CellarApp.Model.Bottle;
 import com.exemple.CellarApp.URLs;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -21,11 +22,10 @@ public class BottleRepositoryImpl implements BottleRepository {
     private ObjectMapper mapper = new ObjectMapper();
 
     @Override
-    public List<Bottle> findAll() {
-        List<Bottle> listBottle = new ArrayList<>();
+    public List<BottleDTO> findAll() {
+        List<BottleDTO> listBottle = new ArrayList<>();
         try {
-            listBottle = mapper.readValue(new URL("file:" + URLs.Bottle.url), new TypeReference<>() {
-            });
+            listBottle = mapper.readValue(new URL("file:" + URLs.Bottle.url), new TypeReference<>(){});
         } catch (IOException e) {
             LOGGER.error(e.getMessage());
         }
@@ -33,9 +33,9 @@ public class BottleRepositoryImpl implements BottleRepository {
     }
 
     @Override
-    public Bottle findById(Integer id) {
-        List<Bottle> listBottle = findAll();
-        for (Bottle b : listBottle) {
+    public BottleDTO findById(Integer id) {
+        List<BottleDTO> listBottle = findAll();
+        for (BottleDTO b : listBottle) {
             if (b.getId().equals(id)) {
                 return b;
             }
@@ -44,8 +44,8 @@ public class BottleRepositoryImpl implements BottleRepository {
     }
 
     @Override
-    public void addNew(Bottle bottle) {
-        List<Bottle> listBottle = findAll();
+    public void addNew(BottleDTO bottle) {
+        List<BottleDTO> listBottle = findAll();
         if (!listBottle.isEmpty()) {
             bottle.setId(listBottle.get(listBottle.size() - 1).getId() + 1);
         } else {
@@ -60,16 +60,19 @@ public class BottleRepositoryImpl implements BottleRepository {
     }
 
     @Override
-    public void modify(Integer id, Bottle bottle) {
-        List<Bottle> listBottle = findAll();
+    public void modify(Integer id, BottleDTO bottle) {
+        List<BottleDTO> listBottle = findAll();
         if (!listBottle.isEmpty()) {
-            for (Bottle b : listBottle) {
+            for (BottleDTO b : listBottle) {
                 if (b.getId().equals(id)) {
-                    b.setName(bottle.getName());
-                    b.setInfos(bottle.getInfos());
+                    b.setVintage(bottle.getVintage());
                     b.setPrice(bottle.getPrice());
+                    b.setInfos(bottle.getInfos());
+                    b.setColor(bottle.getColor());
                     b.setYear(bottle.getYear());
                     b.setQuantity(bottle.getQuantity());
+                    b.setCastelId(bottle.getCastelId());
+                    b.setNamingId(bottle.getNamingId());
                     try {
                         mapper.writeValue(new File(URLs.Bottle.url), listBottle);
                     } catch (IOException e) {
@@ -82,7 +85,7 @@ public class BottleRepositoryImpl implements BottleRepository {
 
     @Override
     public void deleteById(Integer id) {
-        List<Bottle> listBottle = findAll();
+        List<BottleDTO> listBottle = findAll();
         listBottle.removeIf(b -> b.getId().equals(id));
         try {
             mapper.writeValue(new File(URLs.Bottle.url), listBottle);

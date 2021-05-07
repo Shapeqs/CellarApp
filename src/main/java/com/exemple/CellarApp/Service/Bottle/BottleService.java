@@ -1,4 +1,4 @@
-package com.exemple.CellarApp.Service;
+package com.exemple.CellarApp.Service.Bottle;
 
 
 import com.exemple.CellarApp.Model.Bottle;

@@ -2,15 +2,15 @@ package com.exemple.CellarApp.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
-public class Castel implements Serializable {
+public class Naming implements Serializable {
     @Id
     private Integer id;
     private String name;
-
-    public Castel() {}
 
     public Integer getId() {
         return id;
@@ -30,7 +30,7 @@ public class Castel implements Serializable {
 
     @Override
     public String toString() {
-        return "Castel{" +
+        return "Calling{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
