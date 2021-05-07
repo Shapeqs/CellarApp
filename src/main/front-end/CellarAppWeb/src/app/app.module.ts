@@ -27,7 +27,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     RouterModule.forRoot([
       {path: 'stocks', component: StockComponent},
       {path: 'clients', component: ClientsComponent},
-      {path: '', redirectTo: '/', pathMatch: 'full'},
+      {path: '', redirectTo: '/stocks', pathMatch: 'full'},
       {path: '**', component: PageNotFoundComponent}
     ]),
     NgbModule
