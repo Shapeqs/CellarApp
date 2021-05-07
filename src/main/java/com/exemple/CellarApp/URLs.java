@@ -5,6 +5,8 @@ public enum URLs {
     Castel("Castels.json"),
     Naming("Naming.json"),
     Employe("Employes.json"),
+    Client("Clients.json"),
+    Order("Order.json"),
     User("Users.json");
 
     public final String url;

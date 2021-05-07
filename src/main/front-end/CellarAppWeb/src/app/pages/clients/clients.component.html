@@ -1,0 +1,7 @@
+<h2>Bienvenue sur la page des clients</h2>
+<h3>Mes clients:</h3>
+<div class="d-flex flex-row">
+  <div *ngFor="let client of clients">
+    <app-client-card [client]="client"></app-client-card>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="client-card">
+  <h3>{{client.firstName + client.lastName}}</h3>
+  <div class="client-card_body">
+    Née le : {{client.birthday | date:'MM/dd/yyyy'}}
+  </div>
+  <div class="client-card_footer">
+    <button type="button" class="btn btn-primary">Show Détails</button>
+    <button type="button" class="btn btn-danger">Remove</button>
+  </div>
+</div>

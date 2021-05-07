@@ -11,6 +11,8 @@ import { ClientsComponent } from './pages/clients/clients.component';
 import { RouterModule } from '@angular/router';
 import { BottleComponent } from './shared/component/bottle/bottle.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { ClientCardComponent } from './pages/clients/client-card/client-card.component';
+import {ClientService} from "./shared/services/client.service";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     StockComponent,
     ClientsComponent,
     BottleComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ClientCardComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     ]),
     NgbModule
   ],
-  providers: [BottleService],
+  providers: [BottleService,ClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
