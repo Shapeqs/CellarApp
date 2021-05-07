@@ -1,5 +1,7 @@
-<h1>Mes bouteilles de vins :</h1>
-<div *ngFor="let bottle of bottles">
-  <div>{{bottle.vintage}}</div>
-</div>
+<h1>Bienvenue sur cellar app management</h1>
+<nav>
+  <a class="button" routerLink="/stocks" routerLinkActive="activebutton">Show stock</a> |
+  <a class="button" routerLink="/clients" routerLinkActive="activebutton">Show clients</a>
+</nav>
+<router-outlet></router-outlet>
 

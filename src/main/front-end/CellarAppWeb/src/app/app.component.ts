@@ -9,21 +9,8 @@ import {HttpErrorResponse} from "@angular/common/http";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   title = 'CellarAppWeb';
-  bottles$ : Observable<Bottle[]> = this.bottleService.getBottles();
-  bottles:Bottle[]
-
-  constructor(private bottleService:BottleService) {
-  }
-
-  ngOnInit() {
-    this.bottles$.subscribe(bottles => {
-      this.bottles = bottles;
-    },
-      (error:HttpErrorResponse)=>{
-        alert(error.message);
-      }
-    );
+  constructor() {
   }
 }

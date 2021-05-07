@@ -1,0 +1,7 @@
+<h2>Bienvenue sur la page du stock de vin</h2>
+<h3>Mes bouteilles de vins :</h3>
+<div class="d-flex flex-row">
+  <div *ngFor="let bottle of bottles">
+    <app-bottle [bottle]="bottle"></app-bottle>
+  </div>
+</div>
