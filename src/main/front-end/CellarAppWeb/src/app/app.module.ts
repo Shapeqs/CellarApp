@@ -13,6 +13,7 @@ import { BottleComponent } from './shared/component/bottle/bottle.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ClientCardComponent } from './pages/clients/client-card/client-card.component';
 import {ClientService} from "./shared/services/client.service";
+import { OrdersComponent } from './pages/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {ClientService} from "./shared/services/client.service";
     ClientsComponent,
     BottleComponent,
     PageNotFoundComponent,
-    ClientCardComponent
+    ClientCardComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import {ClientService} from "./shared/services/client.service";
     RouterModule.forRoot([
       {path: 'stocks', component: StockComponent},
       {path: 'clients', component: ClientsComponent},
+      {path: 'orders', component: OrdersComponent},
       {path: '', redirectTo: '/stocks', pathMatch: 'full'},
       {path: '**', component: PageNotFoundComponent}
     ]),
