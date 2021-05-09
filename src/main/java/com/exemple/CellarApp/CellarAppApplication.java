@@ -1,5 +1,6 @@
 package com.exemple.CellarApp;
 
+import com.exemple.CellarApp.Controller.ImageController;
 import org.apache.catalina.filters.CorsFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
