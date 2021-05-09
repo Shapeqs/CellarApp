@@ -2,7 +2,7 @@ package com.exemple.CellarApp.Repository.Bottle;
 
 import com.exemple.CellarApp.DTO.BottleDTO;
 import com.exemple.CellarApp.Model.Bottle;
-import com.exemple.CellarApp.URLs;
+import com.exemple.CellarApp.Utils.URLs;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
