@@ -8,12 +8,11 @@ public enum URLs {
     Client("Model/Clients.json"),
     Order("Model/Order.json"),
     User("Model/Users.json"),
-    WhiteWineImage("Img/WhiteWine.png"),
-    RedWineImage("Img/RedWine.png"),
-    PinkWineImage("Img/PinkWine.png"),
-    YellowWineImage("Img/YellowWine.png"),
-    VintageFont("Font/WineDate.ttf"),
-    AlcoolFont("Font/Imperator.ttf");
+    WhiteWineImage("Img/White.png"),
+    RedWineImage("Img/Red.png"),
+    PinkWineImage("Img/Pink.png"),
+    YellowWineImage("Img/Yellow.png"),
+    Font("Font/Mermaid1001.ttf");
 
     public final String url;
 
