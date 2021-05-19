@@ -1,9 +1,7 @@
 package com.exemple.CellarApp.Controller;
 import com.exemple.CellarApp.Model.Bottle;
-import com.exemple.CellarApp.Model.Castel;
-import com.exemple.CellarApp.Model.Naming;
 import com.exemple.CellarApp.Service.Bottle.BottleService;
-import com.exemple.CellarApp.Utils.URLs;
+import com.exemple.CellarApp.EnumUtils.URLs;
 import org.apache.commons.lang3.text.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

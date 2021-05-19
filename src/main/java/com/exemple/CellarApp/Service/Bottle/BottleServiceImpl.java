@@ -2,7 +2,6 @@ package com.exemple.CellarApp.Service.Bottle;
 
 import com.exemple.CellarApp.DTO.BottleDTO;
 import com.exemple.CellarApp.Model.Bottle;
-import com.exemple.CellarApp.Model.Naming;
 import com.exemple.CellarApp.Repository.Bottle.BottleRepository;
 import com.exemple.CellarApp.Service.Castel.CastelService;
 import com.exemple.CellarApp.Service.Naming.NamingService;
@@ -32,14 +31,14 @@ public class BottleServiceImpl implements BottleService {
     public List<Bottle> findAll() {
         ArrayList<Bottle> bottles = new ArrayList<>();
         for (BottleDTO b : bottleRepository.findAll()) {
-            bottles.add(transformDAOtoEntity(b));
+            bottles.add(transformDTOtoEntity(b));
         }
         return bottles;
     }
 
     @Override
     public Bottle findOne(Integer id) {
-        return transformDAOtoEntity(bottleRepository.findById(id));
+        return transformDTOtoEntity(bottleRepository.findById(id));
     }
 
     @Override
@@ -63,7 +62,7 @@ public class BottleServiceImpl implements BottleService {
         bottleRepository.modify(id, transformEntitytoDTO(b));
     }
 
-    private Bottle transformDAOtoEntity(BottleDTO bottleDTO) {
+    private Bottle transformDTOtoEntity(BottleDTO bottleDTO) {
         Bottle b = new Bottle();
         b.setId(bottleDTO.getId());
         b.setVintage(bottleDTO.getVintage());

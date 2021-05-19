@@ -1,13 +1,12 @@
-package com.exemple.CellarApp.Utils;
+package com.exemple.CellarApp.EnumUtils;
 
 public enum URLs {
     Bottle("Model/Bottles.json"),
     Castel("Model/Castels.json"),
     Naming("Model/Naming.json"),
-    Employe("Model/Employes.json"),
     Client("Model/Clients.json"),
     Order("Model/Order.json"),
-    User("Model/Users.json"),
+    Employe("Model/Employe.json"),
     WhiteWineImage("Img/White.png"),
     RedWineImage("Img/Red.png"),
     PinkWineImage("Img/Pink.png"),

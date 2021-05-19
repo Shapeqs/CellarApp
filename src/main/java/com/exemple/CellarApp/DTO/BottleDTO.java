@@ -1,6 +1,6 @@
 package com.exemple.CellarApp.DTO;
 
-import com.exemple.CellarApp.Model.Color;
+import com.exemple.CellarApp.EnumUtils.Color;
 
 import java.io.Serializable;
 

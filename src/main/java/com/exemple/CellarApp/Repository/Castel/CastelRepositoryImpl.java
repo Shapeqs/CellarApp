@@ -2,7 +2,7 @@ package com.exemple.CellarApp.Repository.Castel;
 
 import com.exemple.CellarApp.DTO.CastelDTO;
 import com.exemple.CellarApp.Model.Castel;
-import com.exemple.CellarApp.Utils.URLs;
+import com.exemple.CellarApp.EnumUtils.URLs;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;

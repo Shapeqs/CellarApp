@@ -1,5 +1,7 @@
 package com.exemple.CellarApp.Model;
 
+import com.exemple.CellarApp.EnumUtils.Color;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
