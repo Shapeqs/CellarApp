@@ -1,4 +1,4 @@
-package com.exemple.CellarApp.EnumUtils;
+package com.exemple.CellarApp.Security;
 
 public enum UserRoles {
     EMPLOYE,

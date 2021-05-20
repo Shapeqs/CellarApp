@@ -23,7 +23,7 @@ import java.text.AttributedString;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("/images")
+@RequestMapping("/api/images")
 public class ImageController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(ImageController.class);

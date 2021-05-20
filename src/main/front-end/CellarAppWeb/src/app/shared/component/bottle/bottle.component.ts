@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Bottle} from "../../models/bottle.model";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-bottle',
@@ -9,6 +10,8 @@ import {Bottle} from "../../models/bottle.model";
 export class BottleComponent{
 
   @Input() bottle: Bottle
+
+  url:string = environment.apiUrls.images;
 
   constructor() { }
 

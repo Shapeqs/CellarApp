@@ -1,6 +1,5 @@
 package com.exemple.CellarApp.Controller;
 
-import com.exemple.CellarApp.Model.Castel;
 import com.exemple.CellarApp.Model.Naming;
 import com.exemple.CellarApp.Service.Naming.NamingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/namings")
+@RequestMapping("/api/namings")
 public class NamingController {
 
     @Autowired

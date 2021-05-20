@@ -20,8 +20,8 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.exemple.CellarApp.EnumUtils.UserRoles.ADMIN;
-import static com.exemple.CellarApp.EnumUtils.UserRoles.EMPLOYE;
+import static com.exemple.CellarApp.Security.UserRoles.ADMIN;
+import static com.exemple.CellarApp.Security.UserRoles.EMPLOYE;
 
 @Configuration
 @EnableWebSecurity()
@@ -39,12 +39,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .cors().and()
+                .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/bottles","/castels", "/naming", "/bottles/*", "/castels/*", "/naming/*" ).permitAll()
-                .anyRequest()
-                .authenticated()
+                .antMatchers("/",
+                        "/api/login/",
+                        "/api/user/",
+                        "/api/bottles/",
+                        "/api/castels/",
+                        "/api/namings/",
+                        "/api/bottles/*",
+                        "/api/castels/*",
+                        "/naming/*").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .formLogin();
+                .httpBasic();
     }
 
     @Override
@@ -54,21 +63,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         List<UserDetails> list = new ArrayList<>();
         for (Employe e : all) {
             UserDetails userBuilded;
-            if (e.getUsername().equals("cquerre") || e.getUsername().equals("dcalippe")) {
+            String role;
+            if (e.getName().equals("Querre") || e.getName().equals("Calippe")) {
                 userBuilded = User.builder()
                         .username(e.getUsername())
                         .password(passwordEncoder.encode(e.getPassword()))
                         .roles(ADMIN.name()) // ROLE_ADMIN
                         .build();
+                role = ADMIN.name();
             } else {
                 userBuilded = User.builder()
                         .username(e.getUsername())
                         .password(passwordEncoder.encode(e.getPassword()))
                         .roles(EMPLOYE.name()) // ROLE_ADMIN
                         .build();
+                role = EMPLOYE.name();
             }
             list.add(userBuilded);
-            LOGGER.info(String.format("User: %s (pass : %s) has been add to the app", userBuilded.getUsername(), userBuilded.getPassword()));
+            LOGGER.info(String.format("%s : %s (pass : %s) has been add to the app", role, userBuilded.getUsername(), userBuilded.getPassword()));
         }
         return new InMemoryUserDetailsManager(list);
     }

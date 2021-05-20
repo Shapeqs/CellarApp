@@ -1,16 +1,29 @@
 import {Component, OnInit} from '@angular/core';
-import {Bottle} from "./shared/models/bottle.model";
-import {BottleService} from "./shared/services/bottle.service";
-import {Observable} from "rxjs";
-import {HttpErrorResponse} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
+import {LoginService} from "./shared/services/login.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent{
-  title = 'CellarAppWeb';
-  constructor() {
+export class AppComponent implements OnInit {
+  title = 'C\' du Vin';
+
+  authenticated: boolean;
+
+  constructor(public loginService: LoginService, private http: HttpClient, private router: Router) {}
+
+  ngOnInit(): void {
+    this.loginService.authenticated.subscribe(
+      auth => this.authenticated = auth
+    );
+  }
+
+
+  logout() {
+    this.loginService.logout();
+    this.router.navigateByUrl('/');
   }
 }
