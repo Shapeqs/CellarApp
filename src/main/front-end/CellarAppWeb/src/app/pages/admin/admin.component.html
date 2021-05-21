@@ -1,0 +1,31 @@
+<h2>Bienvenue sur la page admin</h2>
+<h3>Liste des employes :</h3>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Prénom</th>
+    <th scope="col">Nom de famille</th>
+    <th scope="col">Rôle</th>
+    <th scope="col">Date de naissance</th>
+    <th scope="col">Username</th>
+    <th scope="col">Password</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let employe of employes">
+    <th scope="row">{{employe.id}}</th>
+    <td>{{employe.firstname}}</td>
+    <td>{{employe.name}}</td>
+    <td>{{employe.role}}</td>
+    <td>{{employe.birthDay}}</td>
+    <td>{{employe.username}}</td>
+    <td>{{employe.password}}</td>
+    <td>
+      <button class="btn btn-secondary">Modifier</button>
+      <button class="btn btn-danger">Supprimer</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

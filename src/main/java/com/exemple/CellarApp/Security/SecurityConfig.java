@@ -20,9 +20,6 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.exemple.CellarApp.Security.UserRoles.ADMIN;
-import static com.exemple.CellarApp.Security.UserRoles.EMPLOYE;
-
 @Configuration
 @EnableWebSecurity()
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -46,6 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/login/",
                         "/api/user/",
                         "/api/bottles/",
+                        "/api/images/*",
                         "/api/castels/",
                         "/api/namings/",
                         "/api/bottles/*",
@@ -63,24 +61,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         List<UserDetails> list = new ArrayList<>();
         for (Employe e : all) {
             UserDetails userBuilded;
-            String role;
-            if (e.getName().equals("Querre") || e.getName().equals("Calippe")) {
                 userBuilded = User.builder()
                         .username(e.getUsername())
                         .password(passwordEncoder.encode(e.getPassword()))
-                        .roles(ADMIN.name()) // ROLE_ADMIN
+                        .roles(e.getRole().name())
                         .build();
-                role = ADMIN.name();
-            } else {
-                userBuilded = User.builder()
-                        .username(e.getUsername())
-                        .password(passwordEncoder.encode(e.getPassword()))
-                        .roles(EMPLOYE.name()) // ROLE_ADMIN
-                        .build();
-                role = EMPLOYE.name();
-            }
             list.add(userBuilded);
-            LOGGER.info(String.format("%s : %s (pass : %s) has been add to the app", role, userBuilded.getUsername(), userBuilded.getPassword()));
+            LOGGER.info(String.format("%s : %s (pass : %s) has been add to the app", e.getRole().name(), userBuilded.getUsername(), userBuilded.getPassword()));
         }
         return new InMemoryUserDetailsManager(list);
     }

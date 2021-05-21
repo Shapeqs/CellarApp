@@ -1,5 +1,6 @@
 package com.exemple.CellarApp.Repository.Employe;
 
+import com.exemple.CellarApp.DTO.EmployeDTO;
 import com.exemple.CellarApp.Model.Employe;
 import org.springframework.stereotype.Repository;
 
@@ -8,15 +9,15 @@ import java.util.List;
 @Repository
 public interface EmployeRepository {
 
-    List<Employe> findAll();
+    List<EmployeDTO> findAll();
 
-    Employe findById(Integer id);
+    EmployeDTO findById(Integer id);
 
-    Employe findByUsername(String username);
+    EmployeDTO findByUsername(String username);
 
-    void addNew(Employe employe);
+    void addNew(EmployeDTO employe);
 
-    void modify(Integer id, Employe employe);
+    void modify(Integer id, EmployeDTO employe);
 
     void deleteById(Integer id);
 

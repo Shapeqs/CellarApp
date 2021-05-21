@@ -13,7 +13,8 @@ export const environment = {
     namings: 'http://localhost:8080/api/namings/',
     clients: 'http://localhost:8080/api/clients/',
     orders: 'http://localhost:8080/api/orders/',
-    images: 'http://localhost:8080/api/images/'
+    images: 'http://localhost:8080/api/images/',
+    employes: 'http://localhost:8080/api/employes/'
   }
 
 };

@@ -2,41 +2,46 @@
   {
     "id": 0,
     "name": "Querre",
-    "firstName": "Clément",
+    "firstname": "Clément",
     "birthDay": 917856000000,
     "username": "cquerre",
-    "password": "pass"
+    "password": "pass",
+    "role": "ADMIN"
   },
   {
     "id": 1,
     "name": "Charles",
-    "firstName": "Jean",
+    "firstname": "Jean",
     "birthDay": 607766400,
     "username": "jcharles",
-    "password": "password"
+    "password": "password",
+    "role": "EMPLOYE"
   },
   {
     "id": 2,
     "name": "Calippe",
-    "firstName": "Dawen",
+    "firstname": "Dawen",
     "birthDay": 923299200000,
     "username": "dcalippe",
-    "password": "password"
+    "password": "password",
+    "role": "ADMIN"
   },
   {
     "id": 3,
     "name": "El Haddady",
-    "firstName": "Yassine",
+    "firstname": "Yassine",
     "birthDay": 850550400000,
     "username": "yelhaddady",
-    "password": "password"
+    "password": "password",
+    "role": "EMPLOYE"
   },
   {
     "id": 4,
     "name": "Moncul",
-    "firstName": "Julien",
+    "firstname": "Julien",
     "birthDay": 709459200,
     "username": "jmoncul",
-    "password": "password"
+    "password": "password",
+    "role": "EMPLOYE"
   }
 ]

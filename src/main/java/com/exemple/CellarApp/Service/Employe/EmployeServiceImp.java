@@ -1,5 +1,6 @@
 package com.exemple.CellarApp.Service.Employe;
 
+import com.exemple.CellarApp.DTO.EmployeDTO;
 import com.exemple.CellarApp.Model.Employe;
 import com.exemple.CellarApp.Repository.Employe.EmployeRepository;
 import com.exemple.CellarApp.Service.Bottle.BottleServiceImpl;
@@ -21,17 +22,21 @@ public class EmployeServiceImp implements EmployeService {
 
     @Override
     public List<Employe> findAll() {
-        return new ArrayList<>(employeRepository.findAll());
+        ArrayList<Employe> employes = new ArrayList<>();
+        for (EmployeDTO e : employeRepository.findAll()) {
+            employes.add(new Employe(e));
+        }
+        return employes;
     }
 
     @Override
     public Employe findOneById(Integer id) {
-        return employeRepository.findById(id);
+        return new Employe(employeRepository.findById(id));
     }
 
     @Override
     public Employe findOneByLogin(String username) {
-        return employeRepository.findByUsername(username);
+        return new Employe(employeRepository.findByUsername(username));
     }
 
     @Override
@@ -46,7 +51,7 @@ public class EmployeServiceImp implements EmployeService {
 
     @Override
     public void addOne(Employe e) {
-        employeRepository.addNew(e);
+        employeRepository.addNew(new EmployeDTO(e));
     }
 
     @Override
@@ -54,7 +59,7 @@ public class EmployeServiceImp implements EmployeService {
         List<Employe> list = findAll();
         list.removeIf(u -> !u.getId().equals(id));
         if (!list.isEmpty()) {
-            employeRepository.modify(id, e);
+            employeRepository.modify(id, new EmployeDTO(e));
         }
     }
 }

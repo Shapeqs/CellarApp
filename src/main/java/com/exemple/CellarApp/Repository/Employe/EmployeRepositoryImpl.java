@@ -1,8 +1,8 @@
 package com.exemple.CellarApp.Repository.Employe;
 
+import com.exemple.CellarApp.DTO.EmployeDTO;
 import com.exemple.CellarApp.EnumUtils.URLs;
 import com.exemple.CellarApp.Model.Castel;
-import com.exemple.CellarApp.Model.Employe;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class EmployeRepositoryImpl implements EmployeRepository {
@@ -28,9 +27,9 @@ public class EmployeRepositoryImpl implements EmployeRepository {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public List<Employe> findAll() {
+    public List<EmployeDTO> findAll() {
         ObjectMapper mapper = new ObjectMapper();
-        List<Employe> listEmploye = new ArrayList<>();
+        List<EmployeDTO> listEmploye = new ArrayList<>();
         try {
             listEmploye = mapper.readValue(new URL("file:" + URLs.Employe.url), new TypeReference<>() {
             });
@@ -41,9 +40,9 @@ public class EmployeRepositoryImpl implements EmployeRepository {
         return listEmploye;
     }
 
-    public Employe findById(Integer id) {
-        List<Employe> employes = findAll();
-        for (Employe employe : employes) {
+    public EmployeDTO findById(Integer id) {
+        List<EmployeDTO> employes = findAll();
+        for (EmployeDTO employe : employes) {
             if (employe.getId().equals(id)) {
                 return employe;
             }
@@ -51,9 +50,9 @@ public class EmployeRepositoryImpl implements EmployeRepository {
         return null;
     }
 
-    public Employe findByUsername(String username) {
-        List<Employe> employes = findAll();
-        for (Employe employe : employes) {
+    public EmployeDTO findByUsername(String username) {
+        List<EmployeDTO> employes = findAll();
+        for (EmployeDTO employe : employes) {
             if (employe.getUsername().equals(username)) {
                 return employe;
             }
@@ -61,8 +60,8 @@ public class EmployeRepositoryImpl implements EmployeRepository {
         return null;
     }
 
-    public void addNew(Employe employe) {
-        List<Employe> list = findAll();
+    public void addNew(EmployeDTO employe) {
+        List<EmployeDTO> list = findAll();
         if (!list.isEmpty()) {
             employe.setId(list.get(list.size() - 1).getId() + 1);
         } else {
@@ -76,17 +75,18 @@ public class EmployeRepositoryImpl implements EmployeRepository {
         }
     }
 
-    public void modify(Integer id, Employe employe) {
-        List<Employe> list = findAll();
+    public void modify(Integer id, EmployeDTO employe) {
+        List<EmployeDTO> list = findAll();
         if (!list.isEmpty()) {
-            for (Employe emp : list) {
+            for (EmployeDTO emp : list) {
                 if (emp.getId().equals(id)) {
-                    Employe newEmploye = new Employe(emp.getId(),
+                    EmployeDTO newEmploye = new EmployeDTO(emp.getId(),
                             employe.getName(),
-                            employe.getFirstName(),
+                            employe.getFirstname(),
                             employe.getBirthDay(),
                             employe.getUsername(),
-                            employe.getPassword());
+                            employe.getPassword(),
+                            employe.getRole());
                     list.removeIf(employe1 -> employe1.getId().equals(id));
                     list.add(newEmploye);
                     break;
@@ -101,7 +101,7 @@ public class EmployeRepositoryImpl implements EmployeRepository {
     }
 
     public void deleteById(Integer id) {
-        List<Employe> employes = findAll();
+        List<EmployeDTO> employes = findAll();
         employes.removeIf(c -> c.getId().equals(id));
         try {
             mapper.writeValue(new File(URLs.Employe.url), employes);

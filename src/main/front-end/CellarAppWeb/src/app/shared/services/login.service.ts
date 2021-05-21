@@ -14,8 +14,7 @@ export class LoginService {
   public authenticated:Subject<boolean> = new BehaviorSubject<boolean>(false);
 
 
-  constructor(private http: HttpClient, private router: Router) {
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(employeCredential: { username: string, password: string; }) {
     this.http.post(environment.apiUrls.login, employeCredential).subscribe(isValid => {
@@ -25,8 +24,7 @@ export class LoginService {
           btoa(employeCredential.username + ':' + employeCredential.password)
         );
         this.authenticated.next(true);
-        this.router.navigate(['/clients']);
-        console.log("Login")
+        this.router.navigate(['/admin']);
       } else {
         alert("Authentication failed.")
       }
@@ -36,7 +34,7 @@ export class LoginService {
   logout() {
     sessionStorage.removeItem(LoginService.CURRENT_USER_KEY);
     this.authenticated.next(false);
-    this.router.navigate(['/stocks']);
+    this.router.navigate(['/login']);
     console.log("Logout");
   }
 }

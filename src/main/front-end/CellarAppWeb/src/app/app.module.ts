@@ -17,6 +17,8 @@ import {OrdersComponent} from './pages/orders/orders.component';
 import {LoginComponent} from './pages/login/login.component';
 import {FormsModule} from "@angular/forms";
 import {LoginService} from "./shared/services/login.service";
+import { AdminComponent } from './pages/admin/admin.component';
+import { EmployeComponent } from './shared/component/employe/employe.component';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -38,13 +40,16 @@ export class XhrInterceptor implements HttpInterceptor {
     PageNotFoundComponent,
     ClientCardComponent,
     OrdersComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent,
+    EmployeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot([
+      {path: 'admin', component: AdminComponent},
       {path: 'stocks', component: StockComponent},
       {path: 'clients', component: ClientsComponent},
       {path: 'orders', component: OrdersComponent},
