@@ -5,6 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
 
 @Entity
 public class Order implements Serializable {
@@ -16,7 +17,7 @@ public class Order implements Serializable {
     @ManyToOne
     private Client client;
 
-    //Todo :bouteilles ?
+    private HashMap<Bottle, Integer> listBottles;
 
     public Integer getId() {
         return id;
@@ -42,12 +43,21 @@ public class Order implements Serializable {
         this.client = client;
     }
 
+    public HashMap<Bottle, Integer> getListBottles() {
+        return listBottles;
+    }
+
+    public void setListBottles(HashMap<Bottle, Integer> listBottle) {
+        this.listBottles = listBottle;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
                 ", orderDate=" + orderDate +
                 ", client=" + client +
+                ", listBottles=" + listBottles +
                 '}';
     }
 }

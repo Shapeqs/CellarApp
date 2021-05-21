@@ -1,5 +1,12 @@
 [
   {
+    "id": 0,
+    "firstName": "Michel",
+    "lastName": "Dujardin",
+    "birthday": "2020-02-05",
+    "registrationDate": "2020-02-05"
+  },
+  {
     "id": 1,
     "firstName": "Dawen",
     "lastName": "Calippe",

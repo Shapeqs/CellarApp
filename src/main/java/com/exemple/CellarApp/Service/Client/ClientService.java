@@ -1,6 +1,5 @@
 package com.exemple.CellarApp.Service.Client;
 
-import com.exemple.CellarApp.Model.Bottle;
 import com.exemple.CellarApp.Model.Client;
 import org.springframework.stereotype.Service;
 

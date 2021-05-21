@@ -1,0 +1,17 @@
+[
+  {
+    "id": 0,
+    "orderDate": 1580860800000,
+    "idClient": 1,
+    "listBottles": [
+      {
+        "idBottle" : 2,
+        "quantity" : 20
+      },
+      {
+        "idBottle" : 1,
+        "quantity" : 10
+      }
+    ]
+  }
+]

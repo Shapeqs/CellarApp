@@ -21,7 +21,6 @@ public class BottleController {
 
     @GetMapping
     public List<Bottle> getAll() {
-        LOGGER.info("TOUCHAGE DE CUL");
         return bottleService.findAll();
     }
 
