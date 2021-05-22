@@ -7,14 +7,14 @@ export const environment = {
   url:"http://localhost:8080",
   apiUrls:{
     login:'http://localhost:8080/api/login/',
-    currentUser: 'http://localhost:8080/api/user/',
     bottles: 'http://localhost:8080/api/bottles/',
     castels: 'http://localhost:8080/api/castels/',
     namings: 'http://localhost:8080/api/namings/',
     clients: 'http://localhost:8080/api/clients/',
     orders: 'http://localhost:8080/api/orders/',
     images: 'http://localhost:8080/api/images/',
-    employes: 'http://localhost:8080/api/employes/'
+    employes: 'http://localhost:8080/api/employes/',
+    user: 'http://localhost:8080/api/user/'
   }
 
 };

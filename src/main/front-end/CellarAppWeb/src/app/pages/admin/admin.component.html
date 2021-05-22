@@ -1,31 +1,130 @@
-<h2>Bienvenue sur la page admin</h2>
-<h3>Liste des employes :</h3>
-<table class="table">
-  <thead>
-  <tr>
-    <th scope="col">Id</th>
-    <th scope="col">Prénom</th>
-    <th scope="col">Nom de famille</th>
-    <th scope="col">Rôle</th>
-    <th scope="col">Date de naissance</th>
-    <th scope="col">Username</th>
-    <th scope="col">Password</th>
-    <th scope="col">Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let employe of employes">
-    <th scope="row">{{employe.id}}</th>
-    <td>{{employe.firstname}}</td>
-    <td>{{employe.name}}</td>
-    <td>{{employe.role}}</td>
-    <td>{{employe.birthDay}}</td>
-    <td>{{employe.username}}</td>
-    <td>{{employe.password}}</td>
-    <td>
-      <button class="btn btn-secondary">Modifier</button>
-      <button class="btn btn-danger">Supprimer</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<div id="main-container" class="container">
+  <h3>Liste des admins :</h3>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Prénom</th>
+      <th>Nom de famille</th>
+      <th>Rôle</th>
+      <th>Date de naissance</th>
+      <th>Username</th>
+      <th *ngIf="admin">Password</th>
+      <th *ngIf="admin">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.firstname}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.role}}</td>
+      <td>{{user.birthday}}</td>
+      <td>{{user.username}}</td>
+      <td *ngIf="admin">{{user.password}}</td>
+      <td *ngIf="admin">
+        <button class="btn btn-secondary">Modifier</button>
+        <button class="btn btn-danger" (click)="openDeleteModal(sure, user)">Supprimer</button>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="7">
+        <button class="btn btn-block btn-secondary">Ajouter employer</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addUserModalLabel">Ajouter un employé</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form class="form-signin" name="form" #addForm="ngForm" (ngSubmit)="f.form.valid"
+              #f="ngForm" novalidate>
+          <h2 class="form-signin-heading">Ajouter un employé</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="sr-only" for="name">Nom</label>
+              <input id="name"
+                     type="text"
+                     class="form-control"
+                     name="name"
+                     required placeholder="Nom"/>
+              <div class="invalid" *ngIf="f.submitted">Le nom est requis</div>
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="firstname">Prénom</label>
+              <input id="firstname" type="text" class="form-control"
+                     name="firstname"
+                     required placeholder="Prénom"/>
+              <div class="invalid" *ngIf="f.submitted">Le prénom est requis
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="birthday">Date de naissance</label>
+            <input id="birthday" type="date" class="form-control"
+                   name="birthday"
+                   required placeholder="Nom"/>
+            <div class="invalid" *ngIf="f.submitted">La date de naissance est requis
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="sr-only" for="username">Nom d'utilisateur</label>
+              <input id="username" type="text" class="form-control"
+                     name="username"
+                     required placeholder="Username"/>
+              <div class="invalid" *ngIf="f.submitted">le nom d'utilisateur est requis
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="password">Mot de passe</label>
+              <input id="password" type="password" class="form-control"
+                     name="password"
+                     required placeholder="Password"/>
+              <div class="invalid" *ngIf="f.submitted">Le mot de passe est requis
+              </div>
+            </div>
+          </div>
+          <label for="role" class="col-sm-2 col-form-label">Rôle : </label>
+          <select name="role" id="role" class="form-select col-sm-10" aria-label="Rôle selectionné">
+            <option value="ADMIN">Admin</option>
+            <option selected value="EMPLOYE">Employe</option>
+          </select>
+          <div>
+            <button type="button" id="add-employee-form" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            <button [disabled]="addForm.invalid" class="btn btn-lg btn-primary btn-block">Ajouter un employé</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #sure let-modal>
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">Profile deletion</h4>
+  <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p><strong>Êtes vous certain de vouloir supprimer le profil de <span class="text-primary">"{{deleteUser.username}}"</span> ?</strong></p>
+  <p>Toutes les informations associés à cet utilisateur seront supprimées.
+    <span class="text-danger">Cette opération est irréversible.</span>
+  </p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Annuler</button>
+  <button type="button" class="btn btn-danger" (click)="modal.close('Remove')">Oui</button>
+</div>
+</ng-template>

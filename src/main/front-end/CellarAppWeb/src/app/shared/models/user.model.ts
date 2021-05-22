@@ -1,8 +1,8 @@
-export class Employe {
+export class User {
   id:number;
   name:string;
   firstname:string;
-  birthDay:Date;
+  birthday:Date;
   username:string;
   password:string;
   role:string;

@@ -1,7 +1,7 @@
 package com.exemple.CellarApp.Security;
 
-import com.exemple.CellarApp.Model.Employe;
-import com.exemple.CellarApp.Service.Employe.EmployeService;
+import com.exemple.CellarApp.Model.User;
+import com.exemple.CellarApp.Service.User.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public EmployeService employeService;
+    public UserService userService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -41,7 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/",
                         "/api/login/",
-                        "/api/user/",
                         "/api/bottles/",
                         "/api/images/*",
                         "/api/castels/",
@@ -57,17 +55,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     @Bean
     protected UserDetailsService userDetailsService() {
-        List<Employe> all = employeService.findAll();
+        List<User> all = userService.findAll();
         List<UserDetails> list = new ArrayList<>();
-        for (Employe e : all) {
+        for (User e : all) {
             UserDetails userBuilded;
-                userBuilded = User.builder()
+                userBuilded = org.springframework.security.core.userdetails.User.builder()
                         .username(e.getUsername())
                         .password(passwordEncoder.encode(e.getPassword()))
                         .roles(e.getRole().name())
                         .build();
             list.add(userBuilded);
-            LOGGER.info(String.format("%s : %s (pass : %s) has been add to the app", e.getRole().name(), userBuilded.getUsername(), userBuilded.getPassword()));
+            LOGGER.info(String.format("%s : %s (pass : %s) has been add to the app", e.getRole().name(), userBuilded.getUsername(), e.getPassword()));
         }
         return new InMemoryUserDetailsManager(list);
     }

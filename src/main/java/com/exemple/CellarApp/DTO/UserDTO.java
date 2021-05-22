@@ -1,45 +1,45 @@
 package com.exemple.CellarApp.DTO;
 
-import com.exemple.CellarApp.Model.Employe;
+import com.exemple.CellarApp.Model.User;
 
 import java.sql.Date;
 
-public class EmployeDTO {
+public class UserDTO {
     private Integer id;
     private String name;
     private String firstname;
-    private Date birthDay;
+    private Date birthday;
     private String username;
     private String password;
     private String role;
 
-    public EmployeDTO(Integer id,
-                      String name,
-                      String firstname,
-                      Date birthDay,
-                      String username,
-                      String password,
-                      String role) {
+    public UserDTO(Integer id,
+                   String name,
+                   String firstname,
+                   Date birthday,
+                   String username,
+                   String password,
+                   String role) {
         this.id = id;
         this.name = name;
         this.firstname = firstname;
-        this.birthDay = birthDay;
+        this.birthday = birthday;
         this.username = username;
         this.password = password;
         this.role = role;
     }
 
-    public EmployeDTO() {
+    public UserDTO() {
     }
 
-    public EmployeDTO(Employe employe) {
-        this.id = employe.getId();
-        this.name = employe.getName();
-        this.firstname = employe.getFirstname();
-        this.birthDay = employe.getBirthDay();
-        this.username = employe.getUsername();
-        this.password = employe.getPassword();
-        this.role = employe.getRole().name();
+    public UserDTO(User user) {
+        this.id = user.getId();
+        this.name = user.getName();
+        this.firstname = user.getFirstname();
+        this.birthday = user.getBirthday();
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.role = user.getRole().name();
     }
 
     public Integer getId() {
@@ -66,12 +66,12 @@ public class EmployeDTO {
         this.firstname = firstname;
     }
 
-    public Date getBirthDay() {
-        return birthDay;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public String getUsername() {
@@ -104,7 +104,7 @@ public class EmployeDTO {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", firstname='" + firstname + '\'' +
-                ", birthDay=" + birthDay +
+                ", birthday=" + birthday +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", roles='" + role + '\'' +

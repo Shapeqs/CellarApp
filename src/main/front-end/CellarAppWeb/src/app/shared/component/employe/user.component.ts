@@ -1,15 +1,15 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {environment} from "../../../../environments/environment";
-import {Employe} from "../../models/employe.model";
+import {User} from "../../models/user.model";
 
 @Component({
   selector: 'app-employe',
-  templateUrl: './employe.component.html',
-  styleUrls: ['./employe.component.scss']
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
 })
-export class EmployeComponent implements OnInit {
+export class UserComponent implements OnInit {
 
-  @Input() employe: Employe
+  @Input() employe: User
 
   url:string = environment.apiUrls.images;
 

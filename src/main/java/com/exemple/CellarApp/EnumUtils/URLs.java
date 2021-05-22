@@ -6,7 +6,7 @@ public enum URLs {
     Naming("Model/Naming.json"),
     Client("Model/Clients.json"),
     Order("Model/Order.json"),
-    Employe("Model/Employe.json"),
+    User("Model/User.json"),
     WhiteWineImage("Img/White.png"),
     RedWineImage("Img/Red.png"),
     PinkWineImage("Img/Pink.png"),

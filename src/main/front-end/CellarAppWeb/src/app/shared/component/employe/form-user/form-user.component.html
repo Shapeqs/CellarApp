@@ -1,0 +1,72 @@
+<div class="row justify-content-center align-items-center" style="height:100vh">
+  <div class="card">
+    <div class="card-header text-center">
+      <form class="form-signin" name="form" (ngSubmit)="f.form.valid && submit()" #f="ngForm" novalidate>
+        <h2 class="form-signin-heading">{{heading}}</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="sr-only" for="name">Nom</label>
+            <input id="name" type="text" class="form-control"
+                   [ngClass]="{ 'is-invalid': f.submitted && !name.valid }"
+                   name="name" [(ngModel)]="user.name"
+                   #name="ngModel" required placeholder="Nom"/>
+            <div class="invalid" *ngIf="f.submitted
+          && !name.valid">Le nom est requis
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="firstname">Prénom</label>
+            <input id="firstname" type="password" class="form-control"
+                   [ngClass]="{ 'is-invalid': f.submitted && !firstname.valid }"
+                   name="firstname" [(ngModel)]="user.firstname"
+                   #firstname="ngModel" required placeholder="Prénom"/>
+            <div class="invalid" *ngIf="f.submitted
+          && !password.valid">Le prénom est requis
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="birthday">Date de naissance</label>
+          <input id="birthday" type="text" class="form-control"
+                 [ngClass]="{ 'is-invalid': f.submitted && !birthday.valid }"
+                 name="name" [(ngModel)]="user.birthday"
+                 #birthday="ngModel" required placeholder="Nom"/>
+          <div class="invalid" *ngIf="f.submitted
+          && !birthday.valid">La date de naissance est requis
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="sr-only" for="username">Nom d'utilisateur</label>
+            <input id="username" type="text" class="form-control"
+                   [ngClass]="{ 'is-invalid': f.submitted && !username.valid }"
+                   name="username" [(ngModel)]="user.username"
+                   #username="ngModel" required placeholder="Username"/>
+            <div class="invalid" *ngIf="f.submitted
+          && !username.valid">le nom d'utilisateur est requis
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="password">Mot de passe</label>
+            <input id="password" type="password" class="form-control"
+                   [ngClass]="{ 'is-invalid': f.submitted && !password.valid }"
+                   name="password" [(ngModel)]="user.password"
+                   #password="ngModel" required placeholder="Password"/>
+            <div class="invalid" *ngIf="f.submitted
+          && !password.valid">Le mot de passe est requis
+            </div>
+          </div>
+        </div>
+        <label for="role" class="col-sm-2 col-form-label">Rôle : </label>
+        <select [(ngModel)]="user.role" id="role" class="form-select col-sm-10" aria-label="Rôle selectionné">
+          <option value="ADMIN">ADMIN</option>
+          <option selected value="EMPLOYE">EMPLOYE</option>
+        </select>
+        <div>
+          <button class="btn btn-lg btn-primary btn-block" [disabled]="loading">. {{wording}} .</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

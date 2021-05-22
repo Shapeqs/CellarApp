@@ -1,6 +1,6 @@
 package com.exemple.CellarApp.Model;
 
-import com.exemple.CellarApp.DTO.EmployeDTO;
+import com.exemple.CellarApp.DTO.UserDTO;
 import com.exemple.CellarApp.Security.UserRoles;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,44 +13,44 @@ import java.sql.Date;
 import java.util.Collection;
 
 @Entity
-public class Employe implements UserDetails {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String firstname;
-    private Date birthDay;
+    private Date birthday;
     private String username;
     private String password;
     private UserRoles role;
 
-    public Employe(Integer id,
-                   String name,
-                   String firstname,
-                   Date birthDay,
-                   String username,
-                   String password,
-                   UserRoles role) {
+    public User(Integer id,
+                String name,
+                String firstname,
+                Date birthday,
+                String username,
+                String password,
+                UserRoles role) {
         this.id = id;
         this.name = name;
         this.firstname = firstname;
-        this.birthDay = birthDay;
+        this.birthday = birthday;
         this.username = username;
         this.password = password;
         this.role = role;
     }
 
-    public Employe(EmployeDTO employeDTO) {
-        this.id = employeDTO.getId();
-        this.name = employeDTO.getName();
-        this.firstname = employeDTO.getFirstname();
-        this.birthDay = employeDTO.getBirthDay();
-        this.username = employeDTO.getUsername();
-        this.password = employeDTO.getPassword();
-        this.role = UserRoles.valueOf(employeDTO.getRole());
+    public User(UserDTO userDTO) {
+        this.id = userDTO.getId();
+        this.name = userDTO.getName();
+        this.firstname = userDTO.getFirstname();
+        this.birthday = userDTO.getBirthday();
+        this.username = userDTO.getUsername();
+        this.password = userDTO.getPassword();
+        this.role = UserRoles.valueOf(userDTO.getRole());
     }
 
-    public Employe() {
+    public User() {
     }
 
     public Integer getId() {
@@ -77,12 +77,12 @@ public class Employe implements UserDetails {
         this.firstname = firstname;
     }
 
-    public Date getBirthDay() {
-        return birthDay;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
+    public void setBirthday(Date birthDay) {
+        this.birthday = birthDay;
     }
 
     @Override
@@ -142,7 +142,7 @@ public class Employe implements UserDetails {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", firstName='" + firstname + '\'' +
-                ", birthDay=" + birthDay +
+                ", birthday=" + birthday +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';

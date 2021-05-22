@@ -6,24 +6,30 @@
       <div class="menu_body">
         <div class="menu_item button" routerLink="/stocks" routerLinkActive="menu_item_active">
           <div class="menu_item_image">
-            <img src="../assets/images/stock_menu.png" style="width:30px;height: 30px"/>
+            <img alt="logo menu stock"  src="../assets/images/stock_menu.png" style="width:30px;height: 30px"/>
           </div>
           <div class="body2 text-white mt-2 mb-2">Stocks</div>
         </div>
         <div class="button menu_item"  routerLink="/clients" routerLinkActive="menu_item_active" [hidden]="!authenticated">
           <div class="menu_item_image">
-            <img src="../assets/images/client_menu.png"style="width:30px;height: 30px"/>
+            <img alt="logo menu client" src="../assets/images/client_menu.png" style="width:30px;height: 30px"/>
           </div>
           <div class="body2 text-white mt-2 mb-2">Clients</div>
         </div>
         <div class="menu_item py-3" routerLink="/orders" routerLinkActive="menu_item_active" [hidden]="!authenticated">
           <div class="menu_item_image">
-            <img src="../assets/images/order_menu.png" style="width:30px;height: 30px"/>
+            <img alt="logo menu order" src="../assets/images/order_menu.png" style="width:30px;height: 30px"/>
           </div>
           <div class="body2 text-white mt-2 mb-2">Commandes</div>
         </div>
         <div class="menu_item py-3" routerLink="/login" routerLinkActive="menu_item_active" [hidden]="authenticated">
           <div class="body2 text-white mt-2 mb-2">Connexion</div>
+        </div>
+        <div class="menu_item py-3" routerLink="/admin" routerLinkActive="menu_item_active" [hidden]="!admin">
+          <div class="menu_item_image">
+            <img alt="logo menu admin" src="../assets/images/admin_menu.png" style="width:30px;height: 30px"/>
+          </div>
+          <div class="body2 text-white mt-2 mb-2">Administration</div>
         </div>
         <div class="menu_item" (click)="logout()" [hidden]="!authenticated">
           <div class="body2 text-white mt-2 mb-2">Déconnexion</div>
