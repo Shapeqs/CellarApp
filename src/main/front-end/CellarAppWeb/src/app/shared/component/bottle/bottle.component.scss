@@ -4,7 +4,7 @@
   flex-direction: column;
   padding: 10px;
   margin-left: 5px;
-
+  cursor: pointer;
   &_body {
   }
 
@@ -22,6 +22,6 @@
 }
 
 .bottleImg {
-  width: 100%;
+  width: 50px;
   height: auto;
 }

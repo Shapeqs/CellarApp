@@ -19,6 +19,9 @@ import {FormsModule} from "@angular/forms";
 import {LoginService} from "./shared/services/login.service";
 import { AdminComponent } from './pages/admin/admin.component';
 import { EmployeComponent } from './shared/component/employe/employe.component';
+import { BottleDetailsComponent } from './shared/component/bottle/bottle-details/bottle-details.component';
+import {BsModalRef, ModalModule} from 'ngx-bootstrap/modal';
+import { BottleFormComponent } from './shared/component/bottle/bottle-form/bottle-form.component';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -42,7 +45,9 @@ export class XhrInterceptor implements HttpInterceptor {
     OrdersComponent,
     LoginComponent,
     AdminComponent,
-    EmployeComponent
+    EmployeComponent,
+    BottleDetailsComponent,
+    BottleFormComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,8 @@ export class XhrInterceptor implements HttpInterceptor {
       {path: '**', component: PageNotFoundComponent}
     ]),
     NgbModule,
-    FormsModule
+    FormsModule,
+    ModalModule,
   ],
   providers: [BottleService, ClientService, LoginService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true
   }],

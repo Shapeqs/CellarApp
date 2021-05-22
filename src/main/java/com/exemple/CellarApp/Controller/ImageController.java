@@ -62,7 +62,7 @@ public class ImageController {
             put("Vintage", font);
             put("Alcool", font.deriveFont(50f));
             put("Year", font.deriveFont(80f));
-            put("Castel", font.deriveFont(80f));
+            put("CastelModel", font.deriveFont(80f));
             put("Naming", font.deriveFont(60f));
         } catch (FontFormatException e) {
             LOGGER.error(e.getMessage());
@@ -80,7 +80,7 @@ public class ImageController {
             assert url != null;
             BufferedImage image = ImageIO.read(new File(url));
             addVintageToImage(image, WordUtils.wrap(bottle.getVintage(), 14));
-            addAttributToImage("Castel", bottle.getCastel().getName(), image, Color.BLACK);
+            addAttributToImage("CastelModel", bottle.getCastel().getName(), image, Color.BLACK);
             addAttributToImage("Year", String.valueOf(bottle.getYear()), image, Color.RED);
             addAttributToImage("Naming", "Appelation " + bottle.getNaming().getName(), image, Color.DARK_GRAY);
             addAttributToImage("Alcool", bottle.getAlcool()+"% vol", image, Color.BLACK);
