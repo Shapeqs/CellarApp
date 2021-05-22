@@ -57,7 +57,7 @@ export class BottleFormComponent implements OnInit{
 
   openCastelForm(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
+      this.closeResult = `${result}`;
       console.log(this.closeResult);
     }, (reason) => {
       this.closeResult = '';
