@@ -1,0 +1,14 @@
+@import "../../../../../assets/style/_variables.scss";
+
+.form-container{
+  padding: 20px;
+  &_header{
+    color: $primary;
+    text-align: center;
+  }
+}
+
+.form-footer{
+  display: flex;
+  justify-content: space-between;
+}

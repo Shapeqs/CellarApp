@@ -1,0 +1,96 @@
+<div class="form-container">
+  <div class="form-container_header h3">
+    Formulaire
+  </div>
+  <form #editBottleForm="ngForm" (ngSubmit)="editBottle(editBottleForm)">
+    <div class="form-group">
+      <label for="name">Nom :</label>
+      <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Nom du vin" required>
+    </div>
+    <div class="form-group">
+      <label for="colorPicker">Type :</label>
+      <select class="form-control" id="colorPicker">
+        <option>Rouge</option>
+        <option>Rosé</option>
+        <option>Blanc</option>
+        <option>Moelleux</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="castelPicker">Chateau :</label>
+      <div class="input-group">
+        <select class="form-control" id="castelPicker">
+          <option>Rouge</option>
+          <option>Rosé</option>
+          <option>Blanc</option>
+          <option>Moelleux</option>
+        </select>
+        <div class="input-group-append">
+          <span class="input-group-text button" (click)="openCastelForm(content)">+</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="alcohol">Taux d'alcool :</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="alcohol" placeholder="Taux d'alcool">
+        <div class="input-group-append">
+          <span class="input-group-text">%</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="info">Description :</label>
+      <textarea ngModel name="infos" class="form-control" id="info" placeholder="Description du vin" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="price">Prix :</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="price" placeholder="Prix d'une bouteille en euros">
+        <div class="input-group-append">
+          <span class="input-group-text">€</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Job title</label>
+      <input type="text" ngModel name="jobTitle" class="form-control" id="jobTile" placeholder="Job title" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="text" ngModel name="phone" class="form-control" id="phone" placeholder="Phone" required>
+    </div>
+    <div class="form-footer">
+      <button type="button" id="add-employee-form" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
+      <button [disabled]="editBottleForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+    </div>
+  </form>
+</div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #editBottleForm="ngForm" >
+      <div class="form-group">
+        <label for="dateOfBirth">Date of birth</label>
+        <div class="input-group">
+          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
