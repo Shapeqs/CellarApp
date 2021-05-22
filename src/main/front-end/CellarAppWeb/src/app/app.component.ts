@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   title = 'C\' du Vin';
 
   authenticated: boolean;
+  today: Date = new Date();
 
   constructor(public loginService: LoginService, private http: HttpClient, private router: Router) {}
 

@@ -1,1 +1,209 @@
-$interactive-primary-0 : #283593;
+
+$grey-darker: #212121;
+$grey-dark: #474f61;
+$grey-light: #e4e5e8;
+$white: #ffffff;
+$grey-warm: #9d938e;
+$blue: #283594;
+$cyan: #00b3dc;
+$red: #e7362e;
+$orange: #f6a300;
+$yellow: #ffe521;
+$lime: #ccd500;
+$green: #00a58f;
+$purple: #8384b8;
+$pink: #be0076;
+
+$primary: $blue;
+$secondary: $pink;
+$success: $green;
+$error: $red;
+$warning: $orange;
+$fatal-error: $grey-dark;
+
+$layout-primary: $primary;
+$layout-black: $grey-darker;
+$layout-grey: $grey-dark;
+$layout-grey-light: #e4e5e8;
+$layout-white: $white;
+
+$layout-neutral-d-1: #8384b8;
+$layout-neutral-0: #b5b5d4;
+$layout-neutral-l-1: #e6e6ef;
+$layout-neutral-l-2: #f2f2f7;
+$layout-primary-0: #283594;
+$layout-primary-d-1: rgba(30, 40, 112);
+$layout-secondary-variant-0: #04c3ee;
+$interactive-primary-d-2: #1c1b46;
+$interactive-primary-d-1: #1b2464;
+$interactive-primary-0: #283593;
+$interactive-primary-l-1: #3344bc;
+$interactive-primary-l-2: #9595dc;
+$interactive-primary-l-3: #f4f4fb;
+$interactive-secondary-d-2: #8a0056;
+$interactive-secondary-d-1: #a30065;
+$interactive-secondary: $pink;
+$interactive-secondary-l-1: #f521a5;
+$interactive-secondary-l-2: #fb81cc;
+$denotive-secondary: $secondary;
+$denotive-success-d-1: #008573;
+$denotive-success-l-1: #00d1b5;
+$denotive-success: $success;
+$denotive-success-l-2: #ceefea;
+
+$denotive-error-fatal-d-1: #3a4050;
+$denotive-error-fatal-0: $fatal-error;
+$denotive-error-fatal-l-1: #606b85;
+$denotive-error-fatal-l-2: #f0f1f4;
+
+$denotive-error-d-1: #d22018;
+$denotive-error: $error;
+$denotive-error-0: #e7362e;
+$denotive-error-l-1: #ef7b76;
+$denotive-error-l-2: #fce5e4;
+$denotive-warning-d-1: #e69800;
+$denotive-warning-0: $warning;
+$denotive-warning-l-1: #ffcb66;
+$denotive-warning-l-2: #fff1d6;
+$denotive-info-d-1: #0095b8;
+$denotive-info-l-1: #44c6e4;
+$denotive-info-l-2: #d4f5fc;
+$denotive-disabled-d-1: #a4aab6;
+$denotive-disabled-0: #bbbfc9;
+$denotive-disabled-l-1: #cfd2d8;
+$denotive-disabled-l-2: #e0e2e6;
+
+/*
+** font custom colors
+*/
+
+$font-primary: $primary;
+$font-primary-dark: $grey-dark;
+$font-secondary: $secondary;
+$font-light: $white;
+$font-success: $success;
+$font-danger: $red;
+$font-warning: $orange;
+$font-fatal-error: $denotive-error-fatal-0;
+
+$theme-colors: (
+  layout-white: #ffffff,
+  layout-black: #212121,
+  layout-grey: #474f61,
+  layout-grey-light: #e4e5e8,
+  layout-primary-d-1: #1e2870,
+  layout-primary-0: #283594,
+  layout-neutral-d-1: #8384b8,
+  layout-neutral-0: #b5b5d4,
+  layout-neutral-l-1: #e6e6ef,
+  layout-neutral-l-2: #f2f2f7,
+  interactive-primary-d-2: #1c1b46,
+  interactive-primary-d-1: #1b2464,
+  interactive-primary-0: #283593,
+  interactive-primary-l-1: #3344bc,
+  interactive-primary-l-2: #9595dc,
+  interactive-secondary-d-2: #8a0056,
+  interactive-secondary-d-1: #a30065,
+  interactive-secondary-0: #be0076,
+  interactive-secondary-l-1: #f521a5,
+  interactive-secondary-l-2: #fb81cc,
+  denotive-success-d-1: #008573,
+  denotive-success-0: #00a58f,
+  denotive-success-l-1: #00d1b5,
+  denotive-success-l-2: #ceefea,
+  denotive-error-fatal-d-1: #3a4050,
+  denotive-error-fatal-0: #474f62,
+  denotive-error-fatal-l-1: #606b85,
+  dentive-error-fatal-l-2: #f0f1f4,
+  denotive-error-d-1: #d22018,
+  denotive-error-0: #e7362e,
+  denotive-error-l-1: #ef7b76,
+  denotive-error-l-2: #fce5e4,
+  denotive-warning-d-1: #e69800,
+  denotive-warning-0: #f6a300,
+  denotive-warning-l-1: #ffcb66,
+  denotive-warning-l-2: #fff1d6,
+  denotive-info-d-1: #0095b8,
+  denotive-info-0: #00b3dc,
+  denotive-info-l-1: #44c6e4,
+  denotive-info-l-2: #d4f5fc,
+  denotive-disabled-d-1: #a4aab6,
+  denotive-disabled-0: #bbbfc9,
+  denotive-disabled-l-1: #cfd2d8,
+  denotive-disabled-l-2: #e0e2e6,
+);
+
+$font-family-base: "Roboto";
+$headings-font-family: "Roboto";
+
+$font-size-base: 1rem;
+$h1-font-size: $font-size-base * 1.5;
+$h2-font-size: $font-size-base * 1.375;
+$h3-font-size: $font-size-base * 1.25;
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 1rem,
+  4: 1.5rem,
+  5: 2rem,
+  6: 2.75rem,
+  7: 5.5rem,
+);
+$alignements: ("top", "bottom", "left", "right");
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1280px,
+  2xl: 1440px,
+  3xl: 1920px,
+);
+$enable-shadows: true;
+
+$box-shadow-xs: 0px 2px 2px -1px rgba($layout-neutral-d-1, 0.1),
+0px 3px 4px rgba($layout-primary-d-1, 0.06);
+$box-shadow-sm: 0 5px 8px -3px rgba($layout-neutral-d-1, 0.08),
+0 2px 4px -1px rgba($layout-primary-d-1, 0.1);
+$box-shadow: 0 5px 8px -3px rgba($layout-neutral-d-1, 0.08),
+0 2px 4px -1px rgba($layout-primary-d-1, 0.1);
+$box-shadow-lg: 0 5px 8px -3px rgba($layout-neutral-d-1, 0.08),
+0 8px 20px 1px rgba($layout-primary-d-1, 0.1);
+$box-shadow-xl: 0 16px 24px 2px rgba($layout-neutral-d-1, 0.08),
+0 8px 10px -5px rgba($layout-primary-d-1, 0.1);
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-gutter-width: 1.5rem;
+
+$grid-columns: 24;
+
+$border-radius-sm: 0.25rem;
+$border-radius: 0.5rem;
+$border-radius-lg: 1rem;
+
+$icon-font-size-sm: 1rem;
+$icon-font-size: 1.5rem;
+$icon-font-size-lg: 2rem;
+
+// headings
+
+$headings: "figure-l" "Roboto Condensed" 2.25 300,
+"figure-m" "Roboto Condensed" 1.875 300,
+"figure-s" "Roboto Condensed" 1.25 300, "lead" "Roboto" 1.125 300,
+"body1" "Roboto" 1 300, "body2" "Roboto" 0.875 300,
+"figure-xs" "Roboto Condensed" 0.875 300, "caption" "Roboto" 0.8125 300,
+"legend" "Roboto" 0.75 300;
+
+// line heights
+
+$line-height-crop: 1;
+$line-height-sm: 1.25;
+// $line-height-base: 1.5 !default;
+$line-height-lg: 1.75;
