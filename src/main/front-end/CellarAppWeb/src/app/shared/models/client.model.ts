@@ -4,4 +4,8 @@ export class Client {
   lastName:string;
   birthday:Date;
   registrationDate:Date;
+  phoneNumber:string;
+  email:string;
+  typeClient:string;
+  siren:string;
 }

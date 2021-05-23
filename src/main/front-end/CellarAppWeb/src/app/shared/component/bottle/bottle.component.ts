@@ -5,7 +5,6 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {BottleDetailsComponent} from "./bottle-details/bottle-details.component";
 import {BottleFormComponent} from "./bottle-form/bottle-form.component";
 import {BottleService} from "../../services/bottle.service";
-import {repeat} from "rxjs/operators";
 
 @Component({
   selector: 'app-bottle',

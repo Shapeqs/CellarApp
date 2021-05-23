@@ -57,6 +57,10 @@ public class ClientServiceImpl implements ClientService {
         client.setLastName(clientDTO.getLastName());
         client.setRegistrationDate(clientDTO.getRegistrationDate());
         client.setBirthday(clientDTO.getBirthday());
+        client.setTypeClient(clientDTO.getTypeClient());
+        client.setEmail(clientDTO.getEmail());
+        client.setPhoneNumber(clientDTO.getPhoneNumber());
+        client.setsiren(clientDTO.getsiren());
         return client;
     }
 
@@ -67,6 +71,10 @@ public class ClientServiceImpl implements ClientService {
         clientDTO.setLastName(client.getLastName());
         clientDTO.setRegistrationDate(client.getRegistrationDate());
         clientDTO.setBirthday(client.getBirthday());
+        clientDTO.setTypeClient(client.getTypeClient());
+        clientDTO.setEmail(client.getEmail());
+        clientDTO.setPhoneNumber(client.getPhoneNumber());
+        clientDTO.setsiren(client.getsiren());
         return clientDTO;
     }
 }

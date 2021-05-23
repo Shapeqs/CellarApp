@@ -1,5 +1,8 @@
 package com.exemple.CellarApp.Model;
 
+import com.exemple.CellarApp.EnumUtils.TypeClient;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -14,6 +17,58 @@ public class Client implements Serializable {
     private String lastName;
     private Date birthday;
     private Date registrationDate;
+
+    private String phoneNumber;
+    private String email;
+    private TypeClient typeClient;
+    private String siren;
+
+    public Client() {
+    }
+
+    public Client(Integer id, String firstName, String lastName, Date birthday, Date registrationDate, String phoneNumber, String email, TypeClient typeClient, String siren) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthday = birthday;
+        this.registrationDate = registrationDate;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.typeClient = typeClient;
+        this.siren = siren;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public TypeClient getTypeClient() {
+        return typeClient;
+    }
+
+    public void setTypeClient(TypeClient typeClient) {
+        this.typeClient = typeClient;
+    }
+
+    public String getsiren() {
+        return siren;
+    }
+
+    public void setsiren(String siren) {
+        this.siren = siren;
+    }
 
     public Integer getId() {
         return id;
@@ -63,6 +118,10 @@ public class Client implements Serializable {
                 ", lastName='" + lastName + '\'' +
                 ", birthday=" + birthday +
                 ", registrationDate=" + registrationDate +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", typeClient=" + typeClient +
+                ", siren='" + siren + '\'' +
                 '}';
     }
 }

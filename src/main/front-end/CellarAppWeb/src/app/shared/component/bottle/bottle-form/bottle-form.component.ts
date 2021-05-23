@@ -34,7 +34,6 @@ export class BottleFormComponent implements OnInit{
     this.namingToAdd = new Naming();
     this.getCastels();
     this.getNamings();
-    console.log(this.bottleEdited);
   }
 
   getCastels(){

@@ -1,0 +1,47 @@
+<div class="form-container">
+  <div class="modal-header">
+    <h4 class="form-container_header h3">Formulaire</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form #editClientForm="ngForm" (ngSubmit)="editClient(editClientForm)">
+    <div class="form-group">
+      <label for="namePicker">Type de client :</label>
+      <select class="form-control" id="namePicker"  name="namePicker" [ngModel]="this.typeConverterForm(this.clientEdited?.typeClient)"  (change)="filterChanged($event.target.value)">
+        <option>Personne</option>
+        <option>Entreprise</option>
+      </select>
+    </div>
+    <div class="form-group" *ngIf="formTypeClient==='Personne'">
+      <label for="firstName">Prénom :</label>
+      <input type="text" [ngModel]="this.clientEdited?.firstName" name="firstName" class="form-control" id="firstName" placeholder="Prénom du client" required>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Nom :</label>
+      <input type="text" [ngModel]="this.clientEdited?.lastName" name="lastName" class="form-control" id="lastName" placeholder="Nom du client" required>
+    </div>
+    <div class="form-group" *ngIf="formTypeClient==='Personne'">
+      <label class="sr-only" for="birthday">Date de naissance</label>
+      <input [ngModel]="clientEdited?.birthday"
+             name="birthday" id="birthday"
+             type="date" class="form-control" required/>
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber">Téléphone :</label>
+      <input type="text" [ngModel]="this.clientEdited?.phoneNumber" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Numéro de téléphone" required>
+    </div>
+    <div class="form-group">
+      <label for="email">email :</label>
+      <input type="text" [ngModel]="this.clientEdited?.email" name="email" class="form-control" id="email" placeholder="Email" required>
+    </div>
+    <div class="form-group" *ngIf="formTypeClient==='Entreprise'">
+      <label for="siren">Siren :</label>
+      <input type="text" [ngModel]="this.clientEdited?.siren" name="siren" class="form-control" id="siren" placeholder="Siren" required>
+    </div>
+    <div class="form-footer">
+      <button type="button" id="add-employee-form" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
+      <button [disabled]="editClientForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+    </div>
+  </form>
+</div>

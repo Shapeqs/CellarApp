@@ -69,6 +69,10 @@ public class ClientRepositoryImpl implements ClientRepository{
                     c.setLastName(client.getLastName());
                     c.setBirthday(client.getBirthday());
                     c.setRegistrationDate(client.getRegistrationDate());
+                    c.setEmail(client.getEmail());
+                    c.setPhoneNumber(client.getPhoneNumber());
+                    c.setTypeClient(client.getTypeClient());
+                    c.setsiren(client.getsiren());
                     try {
                         mapper.writeValue(new File(URLs.Client.url), listClient);
                     } catch (IOException e) {

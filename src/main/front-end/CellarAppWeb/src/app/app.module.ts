@@ -23,6 +23,8 @@ import { UserComponent } from './shared/component/employe/user.component';
 import { BottleDetailsComponent } from './shared/component/bottle/bottle-details/bottle-details.component';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import { BottleFormComponent } from './shared/component/bottle/bottle-form/bottle-form.component';
+import { ClientDetailsComponent } from './pages/clients/client-details/client-details.component';
+import { ClientFormComponent } from './pages/clients/client-form/client-form.component';
 import {DatePipe} from "@angular/common";
 
 @Injectable()
@@ -50,7 +52,9 @@ export class XhrInterceptor implements HttpInterceptor {
     FormUserComponent,
     UserComponent,
     BottleDetailsComponent,
-    BottleFormComponent
+    BottleFormComponent,
+    ClientDetailsComponent,
+    ClientFormComponent
   ],
   imports: [
     BrowserModule,

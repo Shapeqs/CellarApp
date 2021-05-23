@@ -1,10 +1,42 @@
-<div class="client-card">
-  <h3>{{client.firstName + client.lastName}}</h3>
+<div *ngIf="client.typeClient==='Person'" class="client-card button" (click)="openDetailModal()">
+  <h3>{{client.firstName +" "+ client.lastName}}</h3>
+  <img src="../../../../assets/images/person_icon.png" style="width: 20px;height: 20px;"/>
   <div class="client-card_body">
-    Née le : {{client.birthday | date:'MM/dd/yyyy'}}
+    Née le : {{client.birthday | date:'dd/MM/yyyy'}}
+    <div>
+      email: {{client.email}}
+    </div>
+    <div>
+      phoneNumber: {{client.phoneNumber}}
+    </div>
   </div>
   <div class="client-card_footer">
-    <button type="button" class="btn btn-primary">Show Détails</button>
+    <button type="button" class="btn btn-primary" (click)="openEditModal()">Edit</button>
     <button type="button" class="btn btn-danger">Remove</button>
+  </div>
+  <div>
+    Inscrit depuis (en petit en bas) : {{client.registrationDate | date:'dd/MM/yyyy'}}
+  </div>
+</div>
+<div *ngIf="client.typeClient==='Company'" class="client-card button" (click)="openDetailModal()">
+  <h3>{{client.lastName}}</h3>
+  <img src="../../../../assets/images/company_icon.png" style="width: 20px;height: 20px;"/>
+  <div class="client-card_body">
+    <div>
+      SIREN: {{client.siren}}
+    </div>
+    <div>
+      email: {{client.email}}
+    </div>
+    <div>
+      phoneNumber: {{client.phoneNumber}}
+    </div>
+  </div>
+  <div class="client-card_footer">
+    <button type="button" class="btn btn-primary" (click)="openEditModal()">Edit</button>
+    <button type="button" class="btn btn-danger">Remove</button>
+  </div>
+  <div>
+    Inscrit depuis (en petit en bas) : {{client.registrationDate | date:'dd/MM/yyyy'}}
   </div>
 </div>
