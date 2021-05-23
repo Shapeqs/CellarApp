@@ -51,12 +51,10 @@ export class UserService {
         'Authorization': 'Basic ' + sessionStorage.getItem(LoginService.CURRENT_USER_KEY)
       })
     }
-    console.log("Supprimer " + employe.username)
-    console.log(environment.apiUrls.employes + employe.id)
     return this.http.delete<void>(environment.apiUrls.employes + employe.id, httpOptions)
   }
 
-  public deleteAll() {
+  public deleteAllEmploye() {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

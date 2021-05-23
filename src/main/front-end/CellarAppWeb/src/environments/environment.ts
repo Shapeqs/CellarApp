@@ -14,7 +14,7 @@ export const environment = {
     orders: 'http://localhost:8080/api/orders/',
     images: 'http://localhost:8080/api/images/',
     employes: 'http://localhost:8080/api/employes/',
-    user: 'http://localhost:8080/api/user/'
+    update_user: 'http://localhost:8080/api/updateUser/'
   }
 
 };

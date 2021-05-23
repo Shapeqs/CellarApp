@@ -15,8 +15,10 @@ export class AppComponent implements OnInit {
   authenticated: boolean;
   today: Date = new Date();
   admin: User;
+  response: any;
 
-  constructor(public loginService: LoginService, private http: HttpClient, private router: Router) {}
+  constructor(public loginService: LoginService, private http: HttpClient, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.loginService.authenticated.subscribe(
@@ -25,11 +27,12 @@ export class AppComponent implements OnInit {
     this.loginService.admin.subscribe(
       auth => this.admin = auth
     );
+    this.response = undefined;
   }
 
 
   logout() {
-    this.loginService.logout();
+    this.loginService.logout()
     this.router.navigateByUrl('/');
   }
 }

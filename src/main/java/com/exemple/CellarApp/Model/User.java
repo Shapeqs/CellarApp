@@ -138,13 +138,14 @@ public class User implements UserDetails {
 
     @Override
     public String toString() {
-        return "Employe{" +
+        return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", firstName='" + firstname + '\'' +
+                ", firstname='" + firstname + '\'' +
                 ", birthday=" + birthday +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", role=" + role.name() +
                 '}';
     }
 }

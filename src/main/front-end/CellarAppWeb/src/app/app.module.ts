@@ -23,6 +23,7 @@ import { UserComponent } from './shared/component/employe/user.component';
 import { BottleDetailsComponent } from './shared/component/bottle/bottle-details/bottle-details.component';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import { BottleFormComponent } from './shared/component/bottle/bottle-form/bottle-form.component';
+import {DatePipe} from "@angular/common";
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -68,7 +69,11 @@ export class XhrInterceptor implements HttpInterceptor {
     FormsModule,
     ModalModule,
   ],
-  providers: [BottleService, ClientService, LoginService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true
+  providers: [BottleService,
+    ClientService,
+    LoginService,
+    DatePipe,
+    { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true
   }],
   bootstrap: [AppComponent]
 })

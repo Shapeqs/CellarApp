@@ -69,12 +69,12 @@ public class UserRepositoryImpl implements UserRepository {
             employe.setId(0);
         }
         list.add(employe);
+        LOGGER.info(String.format("%s %s with credential (%s:%s) added to app", employe.getRole(), employe.getName(), employe.getUsername(), employe.getPassword()));
         try {
             mapper.writeValue(new File(URLs.User.url), list);
         } catch (IOException e) {
             LOGGER.error(e.getMessage());
         }
-        CellarAppApplication.restart();
     }
 
     public void modify(Integer id, UserDTO employe) {

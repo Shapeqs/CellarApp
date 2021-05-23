@@ -34,7 +34,7 @@ export class LoginService {
           this.router.navigate(['/stocks'])
         }
       } else {
-        alert("Authentication failed.")
+        alert("Authentication raté veuillez recommencer.")
       }
     });
   }
@@ -47,3 +47,4 @@ export class LoginService {
     console.log("Logout");
   }
 }
+
