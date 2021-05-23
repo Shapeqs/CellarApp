@@ -1,3 +1,6 @@
+import {Castel} from "./castel.model";
+import {Naming} from "./naming.model";
+
 export class Bottle {
   id:number;
   vintage:string;
@@ -7,6 +10,6 @@ export class Bottle {
   price:number;
   alcool:number;
   quantity:number;
-  castel:any;
-  naming:any;
+  castel:Castel;
+  naming:Naming;
 }

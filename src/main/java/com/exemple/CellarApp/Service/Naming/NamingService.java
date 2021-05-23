@@ -21,4 +21,5 @@ public interface NamingService {
 
     void modifyOne(Integer id, Naming c);
 
+    Naming findByName(String name);
 }

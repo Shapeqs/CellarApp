@@ -23,6 +23,16 @@ export class CastelService {
     return this.http.post<Castel>(environment.apiUrls.castels,body,httpOptions);
   }
 
+  public findCastelByName(name: String): Observable<Castel> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + sessionStorage.getItem(LoginService.CURRENT_USER_KEY)
+      })
+    }
+    return this.http.get<Castel>(environment.apiUrls.castels+"find/"+name,httpOptions);
+  }
+
   public getCastels():Observable<Castel[]>{
     return this.http.get<Castel[]>(environment.apiUrls.castels);
   }

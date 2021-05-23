@@ -20,9 +20,14 @@ public class CastelController {
         return castelService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public Castel getOne(@PathVariable Integer id) {
         return castelService.findOne(id);
+    }
+
+    @GetMapping("/find/{name}")
+    public Castel findByName(@PathVariable String name) {
+        return castelService.findByName(name);
     }
 
     @DeleteMapping("/{id}")

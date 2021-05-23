@@ -19,8 +19,6 @@ export class ClientService {
         'Authorization': 'Basic ' + sessionStorage.getItem(LoginService.CURRENT_USER_KEY)
       })
     }
-    console.log("Oui getClients : " + JSON.stringify(httpOptions)
-      + " : " + sessionStorage.getItem(LoginService.CURRENT_USER_KEY));
     return this.http.get<Client[]>(environment.apiUrls.clients, httpOptions);
   }
 }

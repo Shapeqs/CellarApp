@@ -8,11 +8,11 @@
   <form #editBottleForm="ngForm" (ngSubmit)="editBottle(editBottleForm)">
     <div class="form-group">
       <label for="name">Nom :</label>
-      <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Nom du vin" required>
+      <input type="text" [ngModel]="this.bottleEdited?.vintage" name="vintage" class="form-control" id="name" placeholder="Nom du vin" required>
     </div>
     <div class="form-group">
       <label for="colorPicker">Type :</label>
-      <select class="form-control" id="colorPicker">
+      <select class="form-control" id="colorPicker" [ngModel]="this.colorConverterForm(this.bottleEdited?.color)" name="colorPicker">
         <option>Rouge</option>
         <option>Rosé</option>
         <option>Blanc</option>
@@ -22,7 +22,7 @@
     <div class="form-group">
       <label for="castelPicker">Chateau :</label>
       <div class="input-group">
-        <select class="form-control" id="castelPicker">
+        <select class="form-control" name="castelPicker" id="castelPicker" [ngModel]="this.bottleEdited?.castel.name">
           <option [value]="castle.name" *ngFor="let castle of castels">{{castle.name}}</option>
         </select>
         <div class="input-group-append">
@@ -33,7 +33,7 @@
     <div class="form-group">
       <label for="namingPicker">Appellation :</label>
       <div class="input-group">
-        <select class="form-control" id="namingPicker">
+        <select class="form-control" id="namingPicker" name="namingPicker" [ngModel]="this.bottleEdited?.naming.name">
           <option [value]="naming.name" *ngFor="let naming of namings">{{naming.name}}</option>
         </select>
         <div class="input-group-append">
@@ -42,9 +42,13 @@
       </div>
     </div>
     <div class="form-group">
+      <label for="yearsBottle">Année :</label>
+      <input class="form-control" type="number" [ngModel]="this.bottleEdited?.year" max="{{this.yearMax}}" min="1700" name="yearBottle" id="yearsBottle">
+    </div>
+    <div class="form-group">
       <label for="alcohol">Taux d'alcool :</label>
       <div class="input-group">
-        <input type="text" class="form-control" id="alcohol" placeholder="Taux d'alcool">
+        <input type="text" [ngModel]="this.bottleEdited?.alcool" pattern="[0-9]*[.]?[0-9]+" name="alcohol" class="form-control" id="alcohol" placeholder="Taux d'alcool">
         <div class="input-group-append">
           <span class="input-group-text">%</span>
         </div>
@@ -52,16 +56,20 @@
     </div>
     <div class="form-group">
       <label for="info">Description :</label>
-      <textarea ngModel name="infos" class="form-control" id="info" placeholder="Description du vin" required></textarea>
+      <textarea [ngModel]="this.bottleEdited?.infos" name="infos"  class="form-control" id="info" placeholder="Description du vin" required></textarea>
     </div>
     <div class="form-group">
       <label for="price">Prix :</label>
       <div class="input-group">
-        <input type="text" class="form-control" id="price" placeholder="Prix d'une bouteille en euros">
+        <input type="text" class="form-control" pattern="[0-9]*[.]?[0-9]+" id="price" [ngModel]="this.bottleEdited?.price" name="price" placeholder="Prix d'une bouteille en euros">
         <div class="input-group-append">
           <span class="input-group-text">€</span>
         </div>
       </div>
+    </div>
+    <div class="form-group">
+      <label for="quantityBottle">Quantité en stock :</label>
+      <input class="form-control" type="number" [ngModel]="this.bottleEdited?.quantity" min="0" name="quantityBottle" id="quantityBottle">
     </div>
     <div class="form-footer">
       <button type="button" id="add-employee-form" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>

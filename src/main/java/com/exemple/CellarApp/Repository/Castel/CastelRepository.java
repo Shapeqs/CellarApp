@@ -20,4 +20,5 @@ public interface CastelRepository {
 
     void deleteAll();
 
+    CastelDTO findByName(String name);
 }

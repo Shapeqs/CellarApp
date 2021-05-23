@@ -20,4 +20,5 @@ public interface NamingRepository {
 
     void deleteAll();
 
+    NamingDTO findByName(String name);
 }

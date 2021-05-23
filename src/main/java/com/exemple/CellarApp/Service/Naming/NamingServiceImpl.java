@@ -56,6 +56,11 @@ public class NamingServiceImpl implements NamingService {
         namingRepository.modify(id, transformEntityToDAO(naming));
     }
 
+    @Override
+    public Naming findByName(String name) {
+        return transformDAOtoEntity(namingRepository.findByName(name));
+    }
+
     private Naming transformDAOtoEntity(NamingDTO namingDTO) {
         Naming n = new Naming();
         n.setId(namingDTO.getId());

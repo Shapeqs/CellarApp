@@ -96,4 +96,16 @@ public class CastelRepositoryImpl implements CastelRepository {
             LOGGER.error(e.getMessage());
         }
     }
+
+    @Override
+    public CastelDTO findByName(String name) {
+        List<CastelDTO> listCastel = findAll();
+        for (CastelDTO c : listCastel) {
+            if (c.getName().equals(name)) {
+                return c;
+
+            }
+        }
+        return null;
+    }
 }

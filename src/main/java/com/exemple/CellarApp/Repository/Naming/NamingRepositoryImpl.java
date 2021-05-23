@@ -96,4 +96,15 @@ public class NamingRepositoryImpl implements NamingRepository {
             LOGGER.error(e.getMessage());
         }
     }
+
+    @Override
+    public NamingDTO findByName(String name) {
+        List<NamingDTO> listCalling = findAll();
+        for (NamingDTO c : listCalling) {
+            if (c.getName().equals(name)) {
+                return c;
+            }
+        }
+        return null;
+    }
 }

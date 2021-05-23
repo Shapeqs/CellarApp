@@ -14,6 +14,8 @@ public interface CastelService {
 
     Castel findOne(Integer id);
 
+    Castel findByName(String name);
+
     void deleteOne(Integer id);
 
     void deleteAll();

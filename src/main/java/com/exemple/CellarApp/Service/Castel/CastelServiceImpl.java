@@ -34,6 +34,11 @@ public class CastelServiceImpl implements CastelService {
     }
 
     @Override
+    public Castel findByName(String name) {
+        return transformDAOtoEntity(castelRepository.findByName(name));
+    }
+
+    @Override
     public void deleteOne(Integer id) {
         castelRepository.deleteById(id);
     }

@@ -25,6 +25,11 @@ public class NamingController {
         return namingService.findOne(id);
     }
 
+    @GetMapping("/find/{name}")
+    public Naming findByName(@PathVariable String name) {
+        return namingService.findByName(name);
+    }
+
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYE')")
     public void deleteCastel(@PathVariable Integer id) {

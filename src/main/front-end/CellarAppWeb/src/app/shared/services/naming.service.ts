@@ -25,6 +25,16 @@ export class NamingService {
     return this.http.post<Naming>(environment.apiUrls.namings,body,httpOptions);
   }
 
+  public findNamingByName(name: String): Observable<Naming> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + sessionStorage.getItem(LoginService.CURRENT_USER_KEY)
+      })
+    }
+    return this.http.get<Naming>(environment.apiUrls.namings+"find/"+name,httpOptions);
+  }
+
   public getNamings(): Observable<Naming[]> {
     return this.http.get<Naming[]>(environment.apiUrls.namings);
   }

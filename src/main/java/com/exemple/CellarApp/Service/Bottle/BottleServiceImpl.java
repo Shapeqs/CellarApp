@@ -59,6 +59,8 @@ public class BottleServiceImpl implements BottleService {
 
     @Override
     public void modifyOne(Integer id, Bottle b) {
+        LOGGER.info(b.toString());
+        LOGGER.info(transformEntitytoDTO(b).toString());
         bottleRepository.modify(id, transformEntitytoDTO(b));
     }
 
