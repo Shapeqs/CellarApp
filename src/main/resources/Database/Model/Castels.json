@@ -1,14 +1,1 @@
-[
-  {
-    "id": 0,
-    "name": "Domaine de grava"
-  },
-  {
-    "id": 1,
-    "name": "Chateau Monteigour"
-  },
-  {
-    "id": 2,
-    "name": "Chateau MyTiny"
-  }
-]
+[{"id":0,"name":"Domaine de grava"},{"id":1,"name":"Chateau Monteigour"},{"id":2,"name":"Chateau MyTiny"},{"id":3,"name":"azerty"},{"id":4,"name":"Chateau de ta mère"},{"id":5,"name":"Chateau du Marsan"}]

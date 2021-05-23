@@ -1,4 +1,4 @@
-<div class="bottleCard button" (click)="openDetailModal()">
+<div class="bottleCard button" (click)="openDetailModal(bottle_form)">
   <div class="bottleCard_body">
     <h5>
       {{bottle.vintage + " " + bottle.year}}
@@ -25,11 +25,8 @@
 </div>
 
 
-<ng-template #bottle_detail let-modal>
+<ng-template #bottle_form let-modal>
   <app-bottle-details [bottle]="bottle"></app-bottle-details>
 </ng-template>
 
-<ng-template #bottle_detail let-modal>
-  <app-bottle-details [bottle]="bottle"></app-bottle-details>
-</ng-template>
 

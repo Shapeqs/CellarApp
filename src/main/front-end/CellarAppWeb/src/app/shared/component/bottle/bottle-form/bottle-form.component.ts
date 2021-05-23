@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {NgForm} from "@angular/forms";
 import {BottleService} from "../../../services/bottle.service";
@@ -16,8 +16,10 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class BottleFormComponent implements OnInit{
 
+  @Input() bottle: Bottle
   closeResult = '';
-  bottle :Bottle;
+  castelToAdd:Castel;
+  namingToAdd:Naming;
   namings:Naming[];
   castels:Castel[];
 
@@ -26,7 +28,13 @@ export class BottleFormComponent implements OnInit{
   , private namingService:NamingService) {}
 
   ngOnInit(): void {
-    this.bottle = new Bottle();
+    this.castelToAdd = new Castel();
+    this.namingToAdd = new Naming();
+    this.getCastels();
+    this.getNamings();
+  }
+
+  getCastels(){
     this.castelService.getCastels().subscribe(castels => {
         this.castels = castels;
         console.log(castels);
@@ -35,14 +43,17 @@ export class BottleFormComponent implements OnInit{
         console.log(error.message);
       }
     );
+  }
+
+  getNamings(){
     this.namingService.getNamings().subscribe(namings=>{
-      this.namings=namings;
-      console.log(namings);
-    },
+        this.namings=namings;
+        console.log(namings);
+      },
       (error: HttpErrorResponse) => {
         console.log(error.message);
       }
-      );
+    );
   }
 
   closeModal() {
@@ -58,10 +69,32 @@ export class BottleFormComponent implements OnInit{
   openCastelForm(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `${result}`;
-      console.log(this.closeResult);
-    }, (reason) => {
-      this.closeResult = '';
-      console.log(this.closeResult);
+      this.castelToAdd.name = this.closeResult;
+      this.addCastel();
     });
+  }
+
+  addCastel(){
+    this.castelService.addCastel(this.castelToAdd).subscribe(
+      (response: Castel) => {
+        this.getCastels();
+      }
+    );
+  }
+
+  openNamingForm(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `${result}`;
+      this.namingToAdd.name = this.closeResult;
+      this.addNaming();
+    });
+  }
+
+  addNaming(){
+    this.namingService.addNaming(this.namingToAdd).subscribe(
+      (response: Naming) => {
+        this.getNamings();
+      }
+    );
   }
 }

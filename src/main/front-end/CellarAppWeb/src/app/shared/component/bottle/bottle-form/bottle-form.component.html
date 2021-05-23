@@ -1,6 +1,9 @@
 <div class="form-container">
-  <div class="form-container_header h3">
-    Formulaire
+  <div class="modal-header">
+    <h4 class="form-container_header h3">Formulaire</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <form #editBottleForm="ngForm" (ngSubmit)="editBottle(editBottleForm)">
     <div class="form-group">
@@ -20,13 +23,21 @@
       <label for="castelPicker">Chateau :</label>
       <div class="input-group">
         <select class="form-control" id="castelPicker">
-          <option>Rouge</option>
-          <option>Rosé</option>
-          <option>Blanc</option>
-          <option>Moelleux</option>
+          <option [value]="castle.name" *ngFor="let castle of castels">{{castle.name}}</option>
         </select>
         <div class="input-group-append">
-          <span class="input-group-text button" (click)="openCastelForm(content)">+</span>
+          <span class="input-group-text button" (click)="openCastelForm(modalCastel)">+</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="namingPicker">Appellation :</label>
+      <div class="input-group">
+        <select class="form-control" id="namingPicker">
+          <option [value]="naming.name" *ngFor="let naming of namings">{{naming.name}}</option>
+        </select>
+        <div class="input-group-append">
+          <span class="input-group-text button" (click)="openNamingForm(modalNaming)">+</span>
         </div>
       </div>
     </div>
@@ -52,15 +63,6 @@
         </div>
       </div>
     </div>
-
-    <div class="form-group">
-      <label for="phone">Job title</label>
-      <input type="text" ngModel name="jobTitle" class="form-control" id="jobTile" placeholder="Job title" required>
-    </div>
-    <div class="form-group">
-      <label for="phone">Phone</label>
-      <input type="text" ngModel name="phone" class="form-control" id="phone" placeholder="Phone" required>
-    </div>
     <div class="form-footer">
       <button type="button" id="add-employee-form" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
       <button [disabled]="editBottleForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
@@ -69,10 +71,10 @@
 </div>
 
 
-<ng-template #content let-modal>
+<ng-template #modalCastel let-modal>
   <div class="form-container">
     <div class="modal-header">
-      <h4 class="form-container_header h3" id="modal-basic-title">Ajout d'un chateau</h4>
+      <h4 class="form-container_header h3">Ajout d'un chateau</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -81,12 +83,34 @@
       <form #editCastel="ngForm" >
         <div class="form-group">
           <label for="name">Nom :</label>
-          <input type="text" ngModel name="name" class="form-control" id="nameCastel" placeholder="Nom du vin" required>
+          <input type="text" ngModel name="name" class="form-control" id="nameCastel" placeholder="Nom du chateau" required>
         </div>
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary" (click)="modal.close(editCastel.value.name)">Ajouter le chateau</button>
+      <button [disabled]="editCastel.invalid" type="button" class="btn btn-primary" (click)="modal.close(editCastel.value.name)">Ajouter le chateau</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #modalNaming let-modal>
+  <div class="form-container">
+    <div class="modal-header">
+      <h4 class="form-container_header h3">Ajout d'une appellation</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #editNaming="ngForm" >
+        <div class="form-group">
+          <label for="name">Nom :</label>
+          <input type="text" ngModel name="name" class="form-control" id="nameNaming" placeholder="Nom de l'appellation" required>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button [disabled]="editNaming.invalid" type="button" class="btn btn-primary" (click)="modal.close(editNaming.value.name)">Ajouter l'appellation</button>
     </div>
   </div>
 </ng-template>

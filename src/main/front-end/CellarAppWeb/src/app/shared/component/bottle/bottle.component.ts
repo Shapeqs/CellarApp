@@ -18,22 +18,20 @@ export class BottleComponent{
 
   constructor(private modalService: NgbModal) { }
 
-  openDetailModal() {
+  openDetailModal(content) {
     if(this.modalService.hasOpenModals() == false){
-      this.modalService.open(BottleDetailsComponent, { animation: true });
+      this.modalService.open(content, { animation: true });
     }
   }
 
   openEditModal() {
-    if(this.modalService.hasOpenModals() == false){
-      const modalRef = this.modalService.open(BottleFormComponent, { animation: true });
-
-      modalRef.result.then((result)=>{
-        console.log(result);
-      }).catch((error)=>{
-        console.log(error);
-      })
-    }
+    const modalRef = this.modalService.open(BottleFormComponent, { animation: true });
+    modalRef.componentInstance.bottle = this.bottle;
+    modalRef.result.then((result)=>{
+      console.log(result);
+    }).catch((error)=>{
+      console.log(error);
+    })
   }
 
 }
