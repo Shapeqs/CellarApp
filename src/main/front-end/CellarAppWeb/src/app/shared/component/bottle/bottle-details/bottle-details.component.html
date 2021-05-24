@@ -1,12 +1,27 @@
-<div class="bottleDetails-header">
-  <h4 class="modal-title">Modal title</h4>
-  <button type="button" class="close" aria-label="Close" (click)="hide()">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div class="bottleDetails-body">
-  Content
-</div>
-<div class="bottleDetails-footer">
-  Footer
+<div class="justify-content-center">
+  <div class="card p-3 bg-white">
+    <div class="card-header">
+      <h4 class="modal-title">{{bottleViewed.vintage}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="about-product text-center mt-2 card-body">
+      <img class="bottleImg" src="{{url}}{{bottleViewed.id}}" alt="{{bottleViewed.vintage}}'s bottle image">
+      <div>
+        <h4>{{bottleViewed.vintage}}</h4>
+        <h6 class="mt-0 text-black-50">{{bottleViewed.castel.name}}</h6>
+        <h6 class="mt-0 text-black-50">{{bottleViewed.naming.name}}</h6>
+      </div>
+    </div>
+    <div class="stats mt-2 card-body">
+      <div class="d-flex justify-content-between"><span>Type de vin</span><span>{{bottleViewed.color | typeWine }}</span></div>
+      <div class="d-flex justify-content-between"><span>Prix</span><span>{{bottleViewed.price | currency:'EUR'}}</span></div>
+      <div class="d-flex justify-content-between"><span>Année</span><span>{{bottleViewed.year}}</span></div>
+      <div class="d-flex justify-content-between"><span>Degré d'alcool </span><span>{{bottleViewed.alcool}} %</span></div>
+      <div class="d-flex justify-content-between"><span>Informations supplémentaires </span><span>{{bottleViewed.infos}}</span></div>
+    </div>
+    <div class="d-flex justify-content-between total font-weight-bold mt-4 card-footer">
+      <span>Quantité</span><span>{{bottleViewed.quantity}}</span></div>
+  </div>
 </div>

@@ -1,28 +1,23 @@
-<div class="bottleCard button" (click)="openDetailModal()">
-  <div class="bottleCard_body">
-    <h5>
-      {{bottle.vintage + " " + bottle.year}}
-    </h5>
-    <div>
-      {{bottle.castel.name}} + {{bottle.castel.id}}
-    </div>
-    <div>
-      {{bottle.infos}}
-    </div>
-    <div>
+<div class="d-flex justify-content-center container mt-5">
+  <div class="bottleCard p-3 bg-white button" (click)="openDetailModal()">
+    <div class="about-product text-center mt-2 card-header">
       <img class="bottleImg" src="{{url}}{{bottle.id}}" alt="{{bottle.vintage}}'s bottle image">
+      <div>
+        <h4>{{bottle.vintage}}</h4>
+        <h6 class="mt-0 text-black-50">{{bottle.castel.name}}</h6>
+        <h6 class="mt-0 text-black-50">{{bottle.naming.name}}</h6>
+      </div>
     </div>
-  </div>
-  <div class="bottleCard_footer">
-    <div class="bottleCard_footer_item">{{bottle.alcool +" %"}}</div>
-    <div class="bottleCard_footer_item">{{bottle.price +" €"}}</div>
-    <div class="bottleCard_footer_item">{{bottle.quantity}}</div>
-  </div>
-  <div class="bottleCard_buttons">
-    <button type="button" class="btn btn-modifier" (click)="openEditModal()">Edit</button>
-    <button type="button" class="btn btn-supprimer">Remove</button>
+    <div class="stats mt-2 card-body">
+      <div class="d-flex justify-content-between p-price">
+        <span>Prix</span><span>{{bottle.price | currency:'EUR'}}</span></div>
+      <div class="d-flex justify-content-between p-price"><span>Année</span><span>{{bottle.year}}</span></div>
+      <div class="d-flex justify-content-between" [hidden]="!authentification"><span>Quantité</span><span>{{bottle.quantity}}</span></div>
+    </div>
+    <div class="d-flex justify-content-between total font-weight-bold mt-4 card-footer">
+      <span [hidden]="authentification">Quantité</span><span [hidden]="authentification">{{bottle.quantity}}</span>
+      <button [hidden]="!authentification" type="button" class="btn btn-modifier" (click)="openEditModal()">Edit</button>
+      <button [hidden]="!authentification" type="button" class="btn btn-supprimer">Remove</button>
+    </div>
   </div>
 </div>
-
-
-

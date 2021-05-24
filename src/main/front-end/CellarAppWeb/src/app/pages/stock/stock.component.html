@@ -2,10 +2,10 @@
   <div class="header h1">
     Gestion du stock
   </div>
-  <button class="btn" id="btn-add-bottle" (click)="openForm()">Ajouter une bouteille</button>
+  <button [hidden]="!authenticated" class="btn" id="btn-add-bottle" (click)="openForm()">Ajouter une bouteille</button>
 </div>
 <div class="d-flex flex-row flex-wrap justify-content-center">
   <div *ngFor="let bottle of bottles">
-    <app-bottle [bottle]="bottle"></app-bottle>
+    <app-bottle [bottle]="bottle" [authentification]="authenticated"></app-bottle>
   </div>
 </div>

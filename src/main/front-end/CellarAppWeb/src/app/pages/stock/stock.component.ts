@@ -7,6 +7,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {BottleFormComponent} from "../../shared/component/bottle/bottle-form/bottle-form.component";
 import {Castel} from "../../shared/models/castel.model";
 import {Naming} from "../../shared/models/naming.model";
+import {LoginService} from "../../shared/services/login.service";
 
 @Component({
   selector: 'app-stock',
@@ -18,8 +19,9 @@ export class StockComponent implements OnInit {
   bottles$: Observable<Bottle[]> = this.bottleService.getBottles();
   bottles: Bottle[];
   bottle:Bottle;
+  authenticated: boolean;
 
-  constructor(private modalService: NgbModal,private bottleService: BottleService) {
+  constructor(private modalService: NgbModal,private bottleService: BottleService, private loginService:LoginService) {
   }
 
   ngOnInit() {
@@ -33,6 +35,9 @@ export class StockComponent implements OnInit {
     this.bottle=new Bottle();
     this.bottle.castel = new Castel();
     this.bottle.naming= new Naming();
+    this.loginService.authenticated.subscribe(
+      auth => this.authenticated = auth
+    );
   }
 
   openForm() {

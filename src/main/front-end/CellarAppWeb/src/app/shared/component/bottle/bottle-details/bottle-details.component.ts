@@ -10,8 +10,8 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class BottleDetailsComponent implements OnInit {
 
-  @Input() bottle: Bottle
-  url_image:string = environment.apiUrls.images;
+  @Input() bottleViewed: Bottle
+  url:string = environment.apiUrls.images;
 
   constructor(public activeModal: NgbActiveModal) { }
 

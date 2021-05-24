@@ -26,6 +26,7 @@ import { BottleFormComponent } from './shared/component/bottle/bottle-form/bottl
 import { ClientDetailsComponent } from './pages/clients/client-details/client-details.component';
 import { ClientFormComponent } from './pages/clients/client-form/client-form.component';
 import {DatePipe} from "@angular/common";
+import {TypeWinePipe} from "./shared/pipe/type-wine.pipe";
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -54,7 +55,8 @@ export class XhrInterceptor implements HttpInterceptor {
     BottleDetailsComponent,
     BottleFormComponent,
     ClientDetailsComponent,
-    ClientFormComponent
+    ClientFormComponent,
+    TypeWinePipe
   ],
   imports: [
     BrowserModule,

@@ -73,7 +73,7 @@
 }
 
 header{
-  height: 7%;
+  height: 100px;
   background-color: $interactive-primary-0;
   width: 100%;
   position: relative;
@@ -93,7 +93,6 @@ header{
   }
   &_header{
     background-color:$interactive-primary-0;
-    margin-bottom: 2%;
   }
 }
 

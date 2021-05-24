@@ -14,6 +14,7 @@ import {BottleService} from "../../services/bottle.service";
 export class BottleComponent{
 
   @Input() bottle: Bottle;
+  @Input() authentification: boolean;
 
   url:string = environment.apiUrls.images;
 
@@ -22,7 +23,13 @@ export class BottleComponent{
 
   openDetailModal() {
     if(this.modalService.hasOpenModals() == false){
-      this.modalService.open(BottleDetailsComponent, { animation: true });
+      const modalRef = this.modalService.open(BottleDetailsComponent, { animation: true });
+      modalRef.componentInstance.bottleViewed = this.bottle;
+      modalRef.result.then((result)=>{
+        if(result!="Modal Closed"){}
+      }).catch((error)=>{
+        console.log(error);
+      })
     }
   }
 
