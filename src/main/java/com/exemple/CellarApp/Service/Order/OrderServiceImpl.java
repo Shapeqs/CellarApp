@@ -52,8 +52,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void addOne(OrderDTO o) {
-        orderRepository.addNew(o);
+    public void addOne(Order o) {
+        orderRepository.addNew(transformEntitytoDTO(o));
     }
 
     @Override
