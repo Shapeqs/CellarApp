@@ -31,11 +31,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/bootstrap4-toggle/css/bootstrap4-toggle.min.css"
+              "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap4-toggle/js/bootstrap4-toggle.min.js"
             ]
           },
           "configurations": {
@@ -98,10 +96,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/bootstrap4-toggle/css/bootstrap4-toggle.min.css"
             ],
             "scripts": [
-              "node_modules/bootstrap4-toggle/js/bootstrap4-toggle.min.js"
             ]
           }
         },

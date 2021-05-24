@@ -1,6 +1,9 @@
 <div class="header h1">
   Gestion des clients
 </div>
+<div>
+  <button class="btn btn-outline-primary" (click)="openForm()">Ajouter un client</button>
+</div>
 <div class="d-flex flex-row">
   <div *ngFor="let client of clients">
     <app-client-card [client]="client"></app-client-card>

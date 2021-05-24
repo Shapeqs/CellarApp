@@ -1,5 +1,9 @@
 <div class="client-detail" *ngIf="client.typeClient==='Person'">
-  <div class="client-detail_header"></div>
+  <div class="client-detail_header">
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <div class="client-detail_body">
     <div>
       <h3>{{client.firstName +" "+ client.lastName}}</h3>
@@ -25,17 +29,21 @@
     <br>
     <br>
     <div class="client-detail_commande_footer">
-      <button class="btn btn-primary"> Ajouter une commande ? </button>
+      <button class="btn btn-primary" routerLink="/order-form" [state]="{data:client}" (click)="closeModal()"> Ajouter une commande ? </button>
       <button class="btn btn-secondary">Voir les commandes </button>
     </div>
   </div>
 </div>
 
 <div class="client-detail" *ngIf="client.typeClient==='Company'">
-  <div class="client-detail_header"></div>
+  <div class="client-detail_header">
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <div class="client-detail_body">
     <div>
-      <h3>{{client.firstName}}</h3>
+      <h3>{{client.lastName}}</h3>
       <img src="../../../../assets/images/company_icon.png" style="width: 20px;height: 20px;"/>
     </div>
     <div>siren={{client.siren}}</div>

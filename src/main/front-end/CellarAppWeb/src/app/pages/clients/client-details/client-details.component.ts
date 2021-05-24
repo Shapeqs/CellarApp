@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Client} from "../../../shared/models/client.model";
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-client-details',
@@ -10,5 +11,9 @@ export class ClientDetailsComponent{
 
   @Input() client : Client
 
-  constructor() { }
+  constructor(public activeModal: NgbActiveModal) { }
+
+  closeModal() {
+    this.activeModal.close('Modal Closed');
+  }
 }

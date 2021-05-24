@@ -4,6 +4,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {BottleDetailsComponent} from "../../../shared/component/bottle/bottle-details/bottle-details.component";
 import {ClientDetailsComponent} from "../client-details/client-details.component";
 import {ClientFormComponent} from "../client-form/client-form.component";
+import {ClientService} from "../../../shared/services/client.service";
 
 @Component({
   selector: 'app-client-card',
@@ -14,7 +15,7 @@ export class ClientCardComponent{
 
   @Input() client : Client
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal,private clientService:ClientService) { }
 
   openDetailModal() {
     if(this.modalService.hasOpenModals() == false){
@@ -29,11 +30,16 @@ export class ClientCardComponent{
       modalRef.componentInstance.clientEdited = this.client;
       modalRef.result.then((result)=>{
         if(result!="Modal Closed"){
-          console.log(result);
+          this.updateClient(result);
         }
       }).catch((error)=>{
         console.log(error);
       })
     }
+  }
+
+  private updateClient(result: Client) {
+    this.clientService.updateClient(result).subscribe((response:Client) =>{
+    });
   }
 }

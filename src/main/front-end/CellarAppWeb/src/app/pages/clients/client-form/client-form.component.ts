@@ -39,10 +39,10 @@ export class ClientFormComponent implements OnInit {
       this.clientEdited.firstName = "null";
       this.clientEdited.birthday = new Date();
     }
-    if(this.clientEdited.registrationDate===null){
+    if(this.clientEdited.registrationDate===undefined){
       this.clientEdited.registrationDate = new Date();
     }
-    console.log(this.clientEdited);
+    this.activeModal.close(this.clientEdited);
   }
 
   filterChanged(selectedValue:string){

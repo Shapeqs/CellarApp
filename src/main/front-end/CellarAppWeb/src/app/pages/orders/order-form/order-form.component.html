@@ -1,0 +1,43 @@
+<div class="d-flex">
+  <div class="d-flex flex-row flex-wrap justify-content-center">
+    <div *ngFor="let bottle of bottles">
+      <app-bottle [bottle]="bottle" [authentification]='true'></app-bottle>
+      <div class="mx-4">
+        <form #addToBasket="ngForm" (ngSubmit)="addBasket(addToBasket,bottle)">
+          <input class="form-control" type="number" min="1" [ngModel]="1" name="quantity" id="quantity">
+          <button class="btn btn-success" type="submit">Ajouter au panier</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="panier border border-dark p-2 m-4 mt-4">
+    <div class="panier_content">
+      <table>
+        <thead>
+        <tr>
+          <th colspan="4" style="text-align: center;">Panier</th>
+        </tr>
+        <tr>
+          <th>Vin</th>
+          <th>Quantité</th>
+          <th>Montant</th>
+          <th>Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  *ngFor="let item of basket | keyvalue">
+          <td class="p-2">{{item.key.vintage}}</td>
+          <td class="p-2">{{item.value}}</td>
+          <td class="p-2">{{formatNumber(item.value*item.key.price)}} €</td>
+          <td class="p-2"><button class="btn btn-danger" (click)="removeToBasket(item.key)"><span>-</span></button></td>
+        </tr>
+        <tr [ngClass]="{'invisible': basket.size ===0}" class="font-weight-bold">
+          <td colspan="2" style="text-align: center;">Total :</td>
+          <td colspan="2">{{totalOrder()}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="btn btn-primary " [ngClass]="{'disabled': basket.size ===0}" (click)="saveOrder()"> Valider la commande</button>
+  </div>
+</div>

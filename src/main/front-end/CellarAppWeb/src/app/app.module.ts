@@ -27,6 +27,7 @@ import { ClientDetailsComponent } from './pages/clients/client-details/client-de
 import { ClientFormComponent } from './pages/clients/client-form/client-form.component';
 import {DatePipe} from "@angular/common";
 import {TypeWinePipe} from "./shared/pipe/type-wine.pipe";
+import { OrderFormComponent } from './pages/orders/order-form/order-form.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @Injectable()
@@ -57,7 +58,8 @@ export class XhrInterceptor implements HttpInterceptor {
     BottleFormComponent,
     ClientDetailsComponent,
     ClientFormComponent,
-    TypeWinePipe
+    TypeWinePipe,
+    OrderFormComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +71,7 @@ export class XhrInterceptor implements HttpInterceptor {
       {path: 'clients', component: ClientsComponent},
       {path: 'orders', component: OrdersComponent},
       {path: 'login', component: LoginComponent},
+      {path: 'order-form', component: OrderFormComponent},
       {path: '', redirectTo: '/stocks', pathMatch: 'full'},
       {path: '**', component: PageNotFoundComponent}
     ]),
