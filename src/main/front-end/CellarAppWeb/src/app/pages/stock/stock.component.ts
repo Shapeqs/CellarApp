@@ -20,6 +20,7 @@ export class StockComponent implements OnInit {
   bottles: Bottle[];
   bottle:Bottle;
   authenticated: boolean;
+  searchBottleVintage: string;
 
   constructor(private modalService: NgbModal,private bottleService: BottleService, private loginService:LoginService) {
   }

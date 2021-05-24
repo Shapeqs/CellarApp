@@ -1,6 +1,6 @@
 <div class="justify-content-center">
   <div class="card p-3 bg-white">
-    <div class="card-header">
+    <div class="card-header d-flex justify-content-between">
       <h4 class="modal-title">{{bottleViewed.vintage}}</h4>
       <button type="button" class="close" aria-label="Close" (click)="hide()">
         <span aria-hidden="true">&times;</span>
@@ -19,7 +19,7 @@
       <div class="d-flex justify-content-between"><span>Prix</span><span>{{bottleViewed.price | currency:'EUR'}}</span></div>
       <div class="d-flex justify-content-between"><span>Année</span><span>{{bottleViewed.year}}</span></div>
       <div class="d-flex justify-content-between"><span>Degré d'alcool </span><span>{{bottleViewed.alcool}} %</span></div>
-      <div class="d-flex justify-content-between"><span>Informations supplémentaires </span><span>{{bottleViewed.infos}}</span></div>
+      <div class="d-flex justify-content-between"><span class="mr-3">Informations supplémentaires </span><span>{{bottleViewed.infos}}</span></div>
     </div>
     <div class="d-flex justify-content-between total font-weight-bold mt-4 card-footer">
       <span>Quantité</span><span>{{bottleViewed.quantity}}</span></div>

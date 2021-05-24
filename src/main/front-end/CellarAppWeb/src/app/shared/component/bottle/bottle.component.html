@@ -12,7 +12,7 @@
       <div class="d-flex justify-content-between p-price">
         <span>Prix</span><span>{{bottle.price | currency:'EUR'}}</span></div>
       <div class="d-flex justify-content-between p-price"><span>Année</span><span>{{bottle.year}}</span></div>
-      <div class="d-flex justify-content-between" [hidden]="!authentification"><span>Quantité</span><span>{{bottle.quantity}}</span></div>
+      <div class="d-flex justify-content-between"><span [hidden]="!authentification">Quantité</span><span [hidden]="!authentification">{{bottle.quantity}}</span></div>
     </div>
     <div class="d-flex justify-content-between total font-weight-bold mt-4 card-footer">
       <span [hidden]="authentification">Quantité</span><span [hidden]="authentification">{{bottle.quantity}}</span>
