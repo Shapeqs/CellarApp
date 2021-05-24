@@ -22,18 +22,18 @@
       <input type="text" [ngModel]="this.clientEdited?.lastName" name="lastName" class="form-control" id="lastName" placeholder="Nom du client" required>
     </div>
     <div class="form-group" *ngIf="formTypeClient==='Personne'">
-      <label class="sr-only" for="birthday">Date de naissance</label>
+      <label for="birthday">Date de naissance</label>
       <input [ngModel]="clientEdited?.birthday"
              name="birthday" id="birthday"
              type="date" class="form-control" required/>
     </div>
     <div class="form-group">
       <label for="phoneNumber">Téléphone :</label>
-      <input type="text" [ngModel]="this.clientEdited?.phoneNumber" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Numéro de téléphone" required>
+      <input type="tel" [ngModel]="this.clientEdited?.phoneNumber"  pattern="[0-9]{10}" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Numéro de téléphone" required>
     </div>
     <div class="form-group">
       <label for="email">email :</label>
-      <input type="text" [ngModel]="this.clientEdited?.email" name="email" class="form-control" id="email" placeholder="Email" required>
+      <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [ngModel]="this.clientEdited?.email" name="email" class="form-control" id="email" placeholder="Email" required>
     </div>
     <div class="form-group" *ngIf="formTypeClient==='Entreprise'">
       <label for="siren">Siren :</label>

@@ -26,7 +26,7 @@ export class BottleService {
         'Authorization': 'Basic ' + sessionStorage.getItem(LoginService.CURRENT_USER_KEY)
       })
     }
-    return this.http.post<Bottle>(environment.apiUrls.bottles, body, httpOptions)
+    return this.http.post<Bottle>(environment.apiUrls.bottles, body, httpOptions);
   }
 
   public updateBottle(result: Bottle) {
