@@ -1,5 +1,23 @@
 package com.exemple.CellarApp.EnumUtils;
 
+/**
+ * Couleur des vins
+ */
 public enum Color {
-    Red, White, Pink, Yellow
+    /**
+     * Rouge
+     */
+    Red,
+    /**
+     * Blanc
+     */
+    White,
+    /**
+     * Rosé
+     */
+    Pink,
+    /**
+     * Mouelleux
+     */
+    Yellow
 }

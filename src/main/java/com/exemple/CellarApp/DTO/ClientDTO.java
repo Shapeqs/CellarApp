@@ -5,6 +5,9 @@ import com.exemple.CellarApp.EnumUtils.TypeClient;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * ClientDTO est la classe représentant l'entité Client pour serialiser Client en json
+ */
 public class ClientDTO implements Serializable {
     private Integer id;
     private String firstName;

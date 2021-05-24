@@ -2,6 +2,9 @@ package com.exemple.CellarApp.DTO;
 
 import java.io.Serializable;
 
+/**
+ * NamingDTO est la classe représentant l'entité Naming pour serialiser Naming en json
+ */
 public class NamingDTO implements Serializable {
     private Integer id;
     private String name;

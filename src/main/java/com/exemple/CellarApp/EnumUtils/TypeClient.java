@@ -1,5 +1,15 @@
 package com.exemple.CellarApp.EnumUtils;
 
+/**
+ * Type de client possible
+ */
 public enum TypeClient {
-    Person, Company
+    /**
+     * Client personne
+     */
+    Person,
+    /**
+     * Client organisation
+     */
+    Company
 }

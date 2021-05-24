@@ -3,6 +3,9 @@ package com.exemple.CellarApp.DTO;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * OrderDTO est la classe représentant l'entité Order pour serialiser Order en json
+ */
 public class OrderDTO {
 
     private Integer id;

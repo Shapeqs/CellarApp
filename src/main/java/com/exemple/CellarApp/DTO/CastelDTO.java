@@ -2,6 +2,9 @@ package com.exemple.CellarApp.DTO;
 
 import java.io.Serializable;
 
+/**
+ * CastelDTO est la classe représentant l'entité Castel pour serialiser Castel en json
+ */
 public class CastelDTO implements Serializable {
     private Integer id;
     private String name;

@@ -1,5 +1,9 @@
 package com.exemple.CellarApp.DTO;
 
+/**
+ * EntryBottleDTO est la classe représentant l'entité <Bottle,int>
+ *     pour serialiser les entry de listBottle dans Order en json
+ */
 public class EntryBottleDTO {
     private Integer idBottle;
     private Integer quantity;

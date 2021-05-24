@@ -4,6 +4,9 @@ import com.exemple.CellarApp.EnumUtils.Color;
 
 import java.io.Serializable;
 
+/**
+ * BottleDTO est la classe représentant l'entité Bottle pour serialiser Bottle en json
+ */
 public class BottleDTO implements Serializable {
 
     private Integer id;

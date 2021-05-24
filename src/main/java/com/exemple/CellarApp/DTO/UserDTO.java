@@ -4,6 +4,9 @@ import com.exemple.CellarApp.Model.User;
 
 import java.sql.Date;
 
+/**
+ * UserDTO est la classe représentant l'entité User pour serialiser User en json
+ */
 public class UserDTO {
     private Integer id;
     private String name;
