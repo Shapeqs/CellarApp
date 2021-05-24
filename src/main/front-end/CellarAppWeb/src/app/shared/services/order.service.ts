@@ -22,4 +22,15 @@ export class OrderService {
     }
     return this.http.get<Order[]>(environment.apiUrls.orders,httpOptions);
   }
+
+  public addOrder(order:Order) {
+    const body = JSON.stringify(order);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + sessionStorage.getItem(LoginService.CURRENT_USER_KEY)
+      })
+    }
+    return this.http.post<Order>(environment.apiUrls.orders, body, httpOptions);
+  }
 }

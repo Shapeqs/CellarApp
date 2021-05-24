@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Bottle} from "../../models/bottle.model";
 import {environment} from "../../../../environments/environment";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
@@ -11,9 +11,10 @@ import {BottleService} from "../../services/bottle.service";
   templateUrl: './bottle.component.html',
   styleUrls: ['./bottle.component.scss']
 })
-export class BottleComponent{
+export class BottleComponent implements OnInit{
 
   @Input() bottle: Bottle;
+  @Input() displayButton:boolean;
   @Input() authentification: boolean;
 
   url:string = environment.apiUrls.images;
@@ -51,5 +52,11 @@ export class BottleComponent{
     this.bottleService.updateBottle(result).subscribe((response:Bottle) =>{
       console.log(response);
     });
+  }
+
+  ngOnInit(): void {
+    if(this.displayButton===undefined){
+      this.displayButton = true;
+    }
   }
 }

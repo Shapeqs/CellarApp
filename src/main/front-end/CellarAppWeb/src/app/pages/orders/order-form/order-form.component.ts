@@ -6,6 +6,7 @@ import {BottleService} from "../../../shared/services/bottle.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {NgForm} from "@angular/forms";
 import {Order} from "../../../shared/models/order.model";
+import {OrderService} from "../../../shared/services/order.service";
 
 @Component({
   selector: 'app-order-form',
@@ -20,7 +21,7 @@ export class OrderFormComponent implements OnInit {
   amountOrder:number;
 
 
-  constructor(private bottleService: BottleService) { }
+  constructor(private bottleService: BottleService, private orderService:OrderService) { }
 
   ngOnInit(): void {
     this.client = history.state.data;
@@ -73,5 +74,8 @@ export class OrderFormComponent implements OnInit {
     order.listBottles = this.basket;
     order.orderDate = new Date();
     console.log(order);
+    this.orderService.addOrder(order).subscribe((response:Order) =>{
+      console.log(response);
+    });
   }
 }

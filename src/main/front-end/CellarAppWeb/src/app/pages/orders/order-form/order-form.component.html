@@ -1,7 +1,7 @@
 <div class="d-flex">
   <div class="d-flex flex-row flex-wrap justify-content-center">
     <div *ngFor="let bottle of bottles">
-      <app-bottle [bottle]="bottle" [authentification]='true'></app-bottle>
+      <app-bottle [displayButton]="false" [bottle]="bottle" [authentification]='true'></app-bottle>
       <div class="mx-4">
         <form #addToBasket="ngForm" (ngSubmit)="addBasket(addToBasket,bottle)">
           <input class="form-control" type="number" min="1" [ngModel]="1" name="quantity" id="quantity">
@@ -33,11 +33,11 @@
         </tr>
         <tr [ngClass]="{'invisible': basket.size ===0}" class="font-weight-bold">
           <td colspan="2" style="text-align: center;">Total :</td>
-          <td colspan="2">{{totalOrder()}}</td>
+          <td colspan="2">{{totalOrder()}}€</td>
         </tr>
         </tbody>
       </table>
     </div>
-    <button class="btn btn-primary " [ngClass]="{'disabled': basket.size ===0}" (click)="saveOrder()"> Valider la commande</button>
+    <button class="btn btn-primary " routerLink="/orders" [ngClass]="{'disabled': basket.size ===0}" (click)="saveOrder()"> Valider la commande</button>
   </div>
 </div>
