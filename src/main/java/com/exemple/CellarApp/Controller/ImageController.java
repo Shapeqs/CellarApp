@@ -1,4 +1,5 @@
 package com.exemple.CellarApp.Controller;
+
 import com.exemple.CellarApp.Model.Bottle;
 import com.exemple.CellarApp.Service.Bottle.BottleService;
 import com.exemple.CellarApp.EnumUtils.URLs;
@@ -22,15 +23,27 @@ import java.io.IOException;
 import java.text.AttributedString;
 import java.util.HashMap;
 
+/**
+ * Contrôleur des requêtes des images de bouteilles
+ */
 @RestController
 @RequestMapping("/api/images")
 public class ImageController {
 
+    /**
+     * Le logger de la classe
+     */
     private final Logger LOGGER = LoggerFactory.getLogger(ImageController.class);
 
+    /**
+     * Le service bouteille utilisé pour trouver les bouteilles
+     */
     @Autowired
     private BottleService bottleService;
 
+    /**
+     * La map des points de localisations pour placer les textes sur l'image
+     */
     private final HashMap<String, Integer> LOCATIONS = new HashMap<>() {{
         put("VintagePosXMin", 900);
         put("VintagePosXMax", 1000);
@@ -54,6 +67,9 @@ public class ImageController {
         put("AlcoolPosYMax", 3000);
     }};
 
+    /**
+     * La map des polices d'écriture en fonction des textes à ajouter
+     */
     private final HashMap<String, Font> FONTS = new HashMap<>() {{
         try {
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -71,6 +87,12 @@ public class ImageController {
         }
     }};
 
+    /**
+     * Methode gerant les méthodes Get pour récupérer une image d'une bouteille
+     *
+     * @param id l'identifiant de la bouteille
+     * @return l'image générée avec les informations de la bouteille
+     */
     @GetMapping("/{id}")
     public byte[] getImage(@PathVariable Integer id) {
         Bottle bottle = bottleService.findOne(id);
@@ -83,7 +105,7 @@ public class ImageController {
             addAttributToImage("Castel", bottle.getCastel().getName(), image, Color.BLACK);
             addAttributToImage("Year", String.valueOf(bottle.getYear()), image, Color.RED);
             addAttributToImage("Naming", "Appelation " + bottle.getNaming().getName(), image, Color.DARK_GRAY);
-            addAttributToImage("Alcool", bottle.getAlcool()+"% vol", image, Color.BLACK);
+            addAttributToImage("Alcool", bottle.getAlcool() + "% vol", image, Color.BLACK);
 
             // Create the new image
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -96,6 +118,14 @@ public class ImageController {
         return null;
     }
 
+    /**
+     * Methode ajoutant un attribut d'une bouteille sur l'image
+     *
+     * @param attribut l'attribut de la bouteille qu'on ajoute
+     * @param string   le texte à ajouter
+     * @param image    l'image
+     * @param color    la couleur du texte à ajouter
+     */
     private void addAttributToImage(String attribut, String string, BufferedImage image, Color color) {
         Font font = FONTS.get(attribut);
         int posXC = getCentrePos(string, attribut, image, font, true);
@@ -104,11 +134,21 @@ public class ImageController {
         addTextToImage(image, font, string, posXC, posYC, color);
     }
 
+    /**
+     * Methode retournant la position du centre pour centrer le texte dans la location de l'attribut
+     *
+     * @param string   le texte à ajouter
+     * @param attribut l'attribut de la bouteille qu'on ajoute
+     * @param image    l'image
+     * @param font     la police d'écriture
+     * @param isPosX   la poosition originale de l'attribut
+     * @return la position du centre
+     */
     private int getCentrePos(String string, String attribut, BufferedImage image, Font font, boolean isPosX) {
         Graphics2D graphics = image.createGraphics();
 
-        int widthOfRectangle = LOCATIONS.get(attribut+"PosXMax") - LOCATIONS.get(attribut+"PosXMin");
-        int heightOfRectangle = LOCATIONS.get(attribut+"PosYMax") - LOCATIONS.get(attribut+"PosYMin");
+        int widthOfRectangle = LOCATIONS.get(attribut + "PosXMax") - LOCATIONS.get(attribut + "PosXMin");
+        int heightOfRectangle = LOCATIONS.get(attribut + "PosYMax") - LOCATIONS.get(attribut + "PosYMin");
 
         FontMetrics ruler = graphics.getFontMetrics(font);
         GlyphVector vector = font.createGlyphVector(ruler.getFontRenderContext(), string);
@@ -117,17 +157,31 @@ public class ImageController {
         double expectedWidth = outline.getBounds().getWidth();
         double expectedHeight = outline.getBounds().getHeight();
 
-        int posX = LOCATIONS.get(attribut+"PosXMin");
-        int posY = LOCATIONS.get(attribut+"PosYMin");
+        int posX = LOCATIONS.get(attribut + "PosXMin");
+        int posY = LOCATIONS.get(attribut + "PosYMin");
 
-        return (isPosX) ?  getCentredPos(posX, widthOfRectangle, expectedWidth) : getCentredPos(posY, heightOfRectangle, expectedHeight);
+        return (isPosX) ? getCentredPos(posX, widthOfRectangle, expectedWidth) : getCentredPos(posY, heightOfRectangle, expectedHeight);
 
     }
 
+    /**
+     * Methode retournant le centre d'un rectangle
+     *
+     * @param pos      la position d'origine du rectangle
+     * @param lengh    la longeur du rectangle
+     * @param expected la taille attendue maximum
+     * @return le centre du rectangle
+     */
     private int getCentredPos(Integer pos, Integer lengh, double expected) {
         return (int) (pos + (lengh - expected) / 2);
     }
 
+    /**
+     * Methode ajoutant l'attribut vintage à l'image
+     *
+     * @param image   l'iamge
+     * @param vintage le nom du vin
+     */
     private void addVintageToImage(BufferedImage image, String vintage) {
         // Create a font for our text
         Font fontTesting = FONTS.get("Vintage");
@@ -158,6 +212,16 @@ public class ImageController {
 
     }
 
+    /**
+     * Methode d'ajout d'un texte sur une image
+     *
+     * @param image l'image en question
+     * @param font  la police d'écriture
+     * @param text  le texte à ajouter
+     * @param posX  la position x du texte
+     * @param posY  la position y du texte
+     * @param color la couleur du texte
+     */
     private void addTextToImage(BufferedImage image, Font font, String text, Integer posX, Integer posY, Color color) {
         AttributedString attributedText = new AttributedString(text);
         attributedText.addAttribute(TextAttribute.FONT, font);
@@ -165,9 +229,15 @@ public class ImageController {
         Graphics2D g = image.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         int ascent = g.getFontMetrics(font).getAscent();
-        g.drawString(attributedText.getIterator(), posX, posY + ascent/3);
+        g.drawString(attributedText.getIterator(), posX, posY + ascent / 3);
     }
 
+    /**
+     * Methode récupérant l'url de l'image à modifier en fonction du type de vin de la bouteille
+     *
+     * @param bottle la bouteille en quesion
+     * @return l'url de la bonne image
+     */
     private String getURLForTheRightTemplate(Bottle bottle) {
         switch (bottle.getColor()) {
             case Red:

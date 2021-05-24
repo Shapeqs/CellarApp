@@ -9,14 +9,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Contrôleur des requêtes d'authentification
+ */
 @RestController
 public class AuthController {
 
+    /**
+     * Logger de classe
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
 
+    /**
+     * Le service utilisateur utilisé pour trouver les utilisateurs qui s'authentifie
+     */
     @Autowired
     private UserService userService;
 
+    /**
+     * Methode gérant le login d'un utilisateur
+     *
+     * @param user l'utilisateur envoyé
+     * @return l'utilisateur si correctement identifié sinon null
+     */
     @RequestMapping("/api/login")
     public User login(@RequestBody User user) {
         User oneByLogin = userService.findOneByLogin(user.getUsername());
