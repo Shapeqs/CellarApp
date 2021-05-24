@@ -10,7 +10,7 @@ import {User} from "../../shared/models/user.model";
 export class LoginComponent implements OnInit {
 
   employeCredential = {username: '', password: ''};
-  wording: string = "Login";
+  wording: string = "S'identifier";
   authenticated: boolean;
   admin: User;
 
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginService.login(this.employeCredential);
     if(this.authenticated) {
-      this.wording = "Loading...";
+      this.wording = "Chargement...";
     }
   }
 

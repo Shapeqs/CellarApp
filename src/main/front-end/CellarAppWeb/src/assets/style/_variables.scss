@@ -14,8 +14,8 @@ $green: #00a58f;
 $purple: #8384b8;
 $pink: #be0076;
 
-$primary: $blue;
-$secondary: $pink;
+$primary: #951556;
+$secondary: #E9B5D2;
 $success: $green;
 $error: $red;
 $warning: $orange;
@@ -34,15 +34,16 @@ $layout-neutral-l-2: #f2f2f7;
 $layout-primary-0: #283594;
 $layout-primary-d-1: #1B2464;
 $layout-secondary-variant-0: #04c3ee;
-$interactive-primary-d-2: #1c1b46;
-$interactive-primary-d-1: #1b2464;
-$interactive-primary-0: #283593;
+$interactive-primary-d-2: #E9B5D2;
+$interactive-primary-d-1: #951556;
+$interactive-primary-0: #682632;
+$interactive-primary-1: #7A242F;
 $interactive-primary-l-1: #3344bc;
 $interactive-primary-l-2: #9595dc;
 $interactive-primary-l-3: #f4f4fb;
-$interactive-secondary-d-2: #8a0056;
-$interactive-secondary-d-1: #a30065;
-$interactive-secondary: $pink;
+$interactive-secondary-d-2: #c86ba7;
+$interactive-secondary-d-1: #98395b;
+$interactive-secondary: #5f1920;
 $interactive-secondary-l-1: #f521a5;
 $interactive-secondary-l-2: #fb81cc;
 $denotive-secondary: $secondary;
@@ -207,3 +208,46 @@ $line-height-crop: 1;
 $line-height-sm: 1.25;
 // $line-height-base: 1.5 !default;
 $line-height-lg: 1.75;
+
+.btn-add{
+  background-color: $interactive-primary-d-1;
+  border-color: $interactive-primary-1;
+  color: white;
+}
+
+.btn-annuler{
+  border-color: $interactive-primary-1;
+  color: $interactive-primary-1;
+}
+
+.btn-annuler:hover {
+  border-color: $interactive-primary-1;
+  background-color: $interactive-secondary-d-2;
+  color: white;
+}
+
+.btn-add:hover{
+  background-color: $interactive-secondary-d-1;
+  border-color: $interactive-secondary;
+  color: white;
+}
+
+.btn-supprimer {
+  background-color: $interactive-primary-1;
+  border-color: $interactive-primary-d-2;
+  color: white;
+}
+.btn-supprimer:hover {
+  background-color: $interactive-secondary;
+  border-color: $interactive-secondary-d-2;
+  color: white;
+}
+
+.btn-modifier {
+  background-color: $interactive-primary-d-2;
+  border-color: $interactive-primary-1;
+}
+.btn-modifier:hover {
+  background-color: $interactive-secondary-d-2;
+  border-color: $interactive-secondary;
+}

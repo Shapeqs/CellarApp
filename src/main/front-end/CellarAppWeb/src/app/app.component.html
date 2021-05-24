@@ -1,51 +1,70 @@
 <div class="page">
   <div class="menu">
-      <div class="menu_header">
-        <img alt="logo of {{title}}" src="data:image/jpeg;base64,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">
+    <div class="menu_header">
+      <div class="logo">
+        <img class="img-fluid rounded-circle" alt="logo of {{title}}" src="../assets/images/logo.png">
       </div>
-      <div class="menu_body">
-        <div class="menu_item button" routerLink="/stocks" routerLinkActive="menu_item_active">
-          <div class="menu_item_image">
-            <img alt="logo menu stock"  src="../assets/images/stock_menu.png" style="width:30px;height: 30px"/>
-          </div>
-          <div class="body2 text-white mt-2 mb-2">Stocks</div>
+    </div>
+    <div class="menu_body" [hidden]="!authenticated">
+      <div class="menu_item button" routerLink="/stocks" routerLinkActive="menu_item_active">
+        <div class="menu_item_image">
+          <img alt="logo menu stock" src="../assets/images/stock_menu.png" style="width:30px;height: 30px"/>
         </div>
-        <div class="button menu_item"  routerLink="/clients" routerLinkActive="menu_item_active" [hidden]="!authenticated">
-          <div class="menu_item_image">
-            <img alt="logo menu client" src="../assets/images/client_menu.png" style="width:30px;height: 30px"/>
-          </div>
-          <div class="body2 text-white mt-2 mb-2">Clients</div>
-        </div>
-        <div class="menu_item py-3" routerLink="/orders" routerLinkActive="menu_item_active" [hidden]="!authenticated">
-          <div class="menu_item_image">
-            <img alt="logo menu order" src="../assets/images/order_menu.png" style="width:30px;height: 30px"/>
-          </div>
-          <div class="body2 text-white mt-2 mb-2">Commandes</div>
-        </div>
-        <div class="menu_item py-3" routerLink="/login" routerLinkActive="menu_item_active" [hidden]="authenticated">
-          <div class="body2 text-white mt-2 mb-2">Connexion</div>
-        </div>
-        <div class="menu_item py-3" routerLink="/admin" routerLinkActive="menu_item_active" [hidden]="!admin">
-          <div class="menu_item_image">
-            <img alt="logo menu admin" src="../assets/images/admin_menu.png" style="width:30px;height: 30px"/>
-          </div>
-          <div class="body2 text-white mt-2 mb-2">Administration</div>
-        </div>
-        <div class="menu_item" (click)="logout()" [hidden]="!authenticated">
-          <div class="body2 text-white mt-2 mb-2">Déconnexion</div>
-        </div>
+        <div class="body2 text-white mt-2 mb-2">Stocks</div>
       </div>
+      <div class="button menu_item" routerLink="/clients" routerLinkActive="menu_item_active">
+        <div class="menu_item_image">
+          <img alt="logo menu client" src="../assets/images/client_menu.png" style="width:30px;height: 30px"/>
+        </div>
+        <div class="body2 text-white mt-2 mb-2">Clients</div>
+      </div>
+      <div class="menu_item py-3" routerLink="/orders" routerLinkActive="menu_item_active">
+        <div class="menu_item_image">
+          <img alt="logo menu order" src="../assets/images/order_menu.png" style="width:30px;height: 30px"/>
+        </div>
+        <div class="body2 text-white mt-2 mb-2">Commandes</div>
+      </div>
+      <div class="menu_item py-3" routerLink="/admin" routerLinkActive="menu_item_active" [hidden]="!admin">
+        <div class="menu_item_image">
+          <img alt="logo menu admin" src="../assets/images/admin_menu.png" style="width:30px;height: 30px"/>
+        </div>
+        <div class="body2 text-white mt-2 mb-2">Administration</div>
+      </div>
+      <div class="menu_item" (click)="logout()">
+        <div class="body2 text-white mt-2 mb-2">Déconnexion</div>
+      </div>
+    </div>
+    <div class="menu_body" [hidden]="authenticated">
+      <div class="menu_item py-3" routerLink="/oui" routerLinkActive="menu_item_active">
+        <div class="body2 text-white mt-2 mb-2">Nos bouteilles</div>
+      </div>
+      <div class="menu_item py-3" routerLink="/non" routerLinkActive="menu_item_active">
+        <div class="body2 text-white mt-2 mb-2">Nos blancs</div>
+      </div>
+      <div class="menu_item py-3" routerLink="/yes" routerLinkActive="menu_item_active">
+        <div class="body2 text-white mt-2 mb-2">Nos rouges</div>
+      </div>
+      <div class="menu_item py-3" routerLink="/non" routerLinkActive="menu_item_active">
+        <div class="body2 text-white mt-2 mb-2">Nos mouelleux</div>
+      </div>
+      <div class="menu_item py-3" routerLink="/rose" routerLinkActive="menu_item_active">
+        <div class="body2 text-white mt-2 mb-2">Nos rosés</div>
+      </div>
+      <div class="menu_item py-3" routerLink="/login" routerLinkActive="menu_item_active">
+        <div class="body2 text-white mt-2 mb-2">Connexion</div>
+      </div>
+    </div>
   </div>
   <div class="content">
-    <header class="box-shadow-sm">
+    <header class="box-shadow-sm d-flex align-items-center flex-column">
+      <div class="nav_title text-layout-grey">
+        <h1>Bienvenue sur {{title}}</h1>
+      </div>
       <div class="nav__date">
         <span class="nav__date__day caption">{{ today | date: "dd" }} </span>
         <span class="nav__date__my ">{{
           today | date: "MMM yyyy" | uppercase
           }}</span>
-      </div>
-      <div class="nav_title text-layout-grey">
-        <h1>Bienvenue sur C'du Vin</h1>
       </div>
     </header>
     <main class="content_body">

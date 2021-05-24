@@ -1,22 +1,25 @@
-<div id="main-container" class="container">
-  <ngb-alert type="warning" #alertModifUsers *ngIf="!alertModifUsersClosed && alertUsernameAlreadyExistClosed && alertBirthdayClosed" (closed)="alertModifUsersClosed = true">
-    <strong>Attention !</strong> Vous devrez redémarrer l'API afin de mettre à jour les utilisateurs de l'API.
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true" (click)="alertModifUsers.close()">&times;</span>
-    </button>
-  </ngb-alert>
-  <ngb-alert type="danger" #alertUsernameAlreadyExist *ngIf="!alertUsernameAlreadyExistClosed" (closed)="alertUsernameAlreadyExistClosed = true">
-    <strong>Attention !</strong> Impossible d'ajouter cet utilisateur car son username existe déjà.
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true" (click)="alertUsernameAlreadyExist.close()">&times;</span>
-    </button>
-  </ngb-alert>
-  <ngb-alert type="danger" #alertBirthdayInvalid *ngIf="!alertBirthdayClosed" (closed)="alertBirthdayClosed = true">
-    <strong>Attention !</strong> Impossible d'ajouter cet utilisateur car son anniversaire n'est pas valide.
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true" (click)="alertBirthdayInvalid.close()">&times;</span>
-    </button>
-  </ngb-alert>
+<ngb-alert type="warning" #alertModifUsers
+           *ngIf="!alertModifUsersClosed && alertUsernameAlreadyExistClosed && alertBirthdayClosed"
+           (closed)="alertModifUsersClosed = true">
+  <strong>Attention !</strong> Vous devrez redémarrer l'API afin de mettre à jour les utilisateurs de l'API.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true" (click)="alertModifUsers.close()">&times;</span>
+  </button>
+</ngb-alert>
+<ngb-alert type="danger" #alertUsernameAlreadyExist *ngIf="!alertUsernameAlreadyExistClosed"
+           (closed)="alertUsernameAlreadyExistClosed = true">
+  <strong>Attention !</strong> Impossible d'ajouter cet utilisateur car son username existe déjà.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true" (click)="alertUsernameAlreadyExist.close()">&times;</span>
+  </button>
+</ngb-alert>
+<ngb-alert type="danger" #alertBirthdayInvalid *ngIf="!alertBirthdayClosed" (closed)="alertBirthdayClosed = true">
+  <strong>Attention !</strong> Impossible d'ajouter cet utilisateur car son anniversaire n'est pas valide.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true" (click)="alertBirthdayInvalid.close()">&times;</span>
+  </button>
+</ngb-alert>
+<div class="container">
   <h3>Liste des admins :</h3>
   <table class="table">
     <thead>
@@ -39,177 +42,178 @@
       <td>{{user.username}}</td>
       <td *ngIf="admin">{{user.password}}</td>
       <td *ngIf="admin">
-        <button class="btn btn-secondary" (click)="openEditModal(editModal, user)">Modifier</button>
-        <button class="btn btn-danger" (click)="openDeleteModal(sure, user)">Supprimer</button>
+        <button class="btn btn-modifier" (click)="openEditModal(editModal, user)">Modifier</button>
+        <button class="btn btn-supprimer" (click)="openDeleteModal(sure, user)">Supprimer</button>
       </td>
     </tr>
     <tr>
       <td colspan="7">
-        <button class="btn btn-block btn-secondary" (click)="openAddModal(addModal)">Ajouter un employé</button>
+        <button class="btn btn-block btn-add" (click)="openAddModal(addModal)">Ajouter un employé</button>
       </td>
     </tr>
     </tbody>
   </table>
+
+  <ng-template #addModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title-add">Ajouter un employé</h4>
+      <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="form-group" #f="ngForm">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="name" class="sr-only">Nom</label>
+            <input [(ngModel)]="newUser.name"
+                   [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched)}"
+                   #name="ngModel"
+                   name="name" type="text" required
+                   class="form-control" id="name" placeholder="Nom">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="firstname" class="sr-only">Prénom</label>
+            <input [(ngModel)]="newUser.firstname"
+                   [ngClass]="{'is-invalid': firstname.invalid && (firstname.dirty || firstname.touched) }"
+                   #firstname="ngModel"
+                   name="firstname" type="text"
+                   class="form-control" id="firstname"
+                   placeholder="Prénom" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="birthday">Date de naissance</label>
+          <input [(ngModel)]="newUser.birthday"
+                 name="birthday" id="birthday"
+                 type="date" class="form-control" required/>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="username" class="sr-only">Nom d'utilisateur</label>
+            <input [(ngModel)]="newUser.username"
+                   [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)  }"
+                   #username="ngModel"
+                   name="username" type="text"
+                   class="form-control" id="username"
+                   placeholder="Nom d'utilisateur" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="password" class="sr-only">Mot de passe</label>
+            <input [(ngModel)]="newUser.password"
+                   [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched) }"
+                   #password="ngModel"
+                   name="password" type="password"
+                   class="form-control" id="password"
+                   placeholder="Mot de passe" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="role" class="col-sm-2 col-form-label">Rôle : </label>
+          <select [(ngModel)]="newUser.role" name="role" id="role" class="form-select col-sm-10">
+            <option selected value="EMPLOYE">Employe</option>
+            <option value="ADMIN">Administrateur</option>
+          </select>
+        </div>
+        <div>
+          <button type="button" id="add-employee-form" class="btn btn-annuler" (click)="modal.dismiss('cancel click')">
+            Annuler
+          </button>
+          <button type="submit" class="btn btn-add" (click)="modal.close('Add')">Ajouter
+            un {{newUser.role}}</button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+
+  <ng-template #editModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title-edit">Modifier un employé</h4>
+      <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="form-group" #formEdit="ngForm" (ngSubmit)="editUser(formEdit)">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="name-edit" class="sr-only">Nom</label>
+            <input [ngModel]="editNewUser.name"
+                   [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched)}"
+                   #name="ngModel"
+                   name="name" type="text"
+                   class="form-control" id="name-edit" placeholder="Nom">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="firstname-edit" class="sr-only">Prénom</label>
+            <input [ngModel]="editNewUser.firstname"
+                   [ngClass]="{'is-invalid': firstname.invalid && (firstname.dirty || firstname.touched) }"
+                   #firstname="ngModel"
+                   name="firstname" type="text"
+                   class="form-control" id="firstname-edit"
+                   placeholder="Prénom">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="birthday-edit">Date de naissance</label>
+          <input [ngModel]="editNewUser.birthday"
+                 name="birthday" id="birthday-edit"
+                 type="date" class="form-control"/>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="username-edit" class="sr-only">Nom d'utilisateur</label>
+            <input [ngModel]="editNewUser.username"
+                   [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)  }"
+                   #username="ngModel"
+                   name="username" type="text"
+                   class="form-control" id="username-edit"
+                   placeholder="Nom d'utilisateur" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="password-edit" class="sr-only">Mot de passe</label>
+            <input [ngModel]="editNewUser.password"
+                   [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched) }"
+                   #password="ngModel"
+                   name="password" type="text"
+                   class="form-control" id="password-edit"
+                   placeholder="Mot de passe" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="role-edit" class="col-sm-2 col-form-label">Rôle : </label>
+          <select [ngModel]="editNewUser.role" name="role" id="role-edit" class="form-select col-sm-10">
+            <option value="EMPLOYE">Employe</option>
+            <option value="ADMIN">Administrateur</option>
+          </select>
+        </div>
+        <div>
+          <button type="button" id="edit-employee-form" class="btn btn-annuler" (click)="modal.dismiss('cancel click')">
+            Annuler
+          </button>
+          <button type="submit" class="btn btn-add" (click)="modal.close('Edit')">
+            Modifier {{editNewUser.username}}</button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+
+  <ng-template #sure let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title-suppr">Suppression</h4>
+      <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p><strong>Êtes vous certain de vouloir supprimer le profil de "{{deleteUser.username}}" ?</strong></p>
+      <p>Toutes les informations associés à cet utilisateur seront supprimées.
+        <span class="text-primary">Cette opération est irréversible.</span>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-annuler" (click)="modal.dismiss('cancel click')">Annuler</button>
+      <button type="button" class="btn btn-supprimer" (click)="modal.close('Remove')">Oui</button>
+    </div>
+  </ng-template>
 </div>
-
-<ng-template #addModal let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-title-add">Ajouter un employé</h4>
-    <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form class="form-group" #f="ngForm">
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="name" class="sr-only">Nom</label>
-          <input [(ngModel)]="newUser.name"
-                 [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched)}"
-                 #name="ngModel"
-                 name="name" type="text" required
-                 class="form-control" id="name" placeholder="Nom">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="firstname" class="sr-only">Prénom</label>
-          <input [(ngModel)]="newUser.firstname"
-                 [ngClass]="{'is-invalid': firstname.invalid && (firstname.dirty || firstname.touched) }"
-                 #firstname="ngModel"
-                 name="firstname" type="text"
-                 class="form-control" id="firstname"
-                 placeholder="Prénom" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="sr-only" for="birthday">Date de naissance</label>
-        <input [(ngModel)]="newUser.birthday"
-               name="birthday" id="birthday"
-               type="date" class="form-control" required/>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="username" class="sr-only">Nom d'utilisateur</label>
-          <input [(ngModel)]="newUser.username"
-                 [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)  }"
-                 #username="ngModel"
-                 name="username" type="text"
-                 class="form-control" id="username"
-                 placeholder="Nom d'utilisateur" required>
-        </div>
-        <div class="form-group col-md-6">
-          <label for="password" class="sr-only">Mot de passe</label>
-          <input [(ngModel)]="newUser.password"
-                 [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched) }"
-                 #password="ngModel"
-                 name="password" type="password"
-                 class="form-control" id="password"
-                 placeholder="Mot de passe" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="role" class="col-sm-2 col-form-label">Rôle : </label>
-        <select [(ngModel)]="newUser.role" name="role" id="role" class="form-select col-sm-10">
-          <option selected value="EMPLOYE">Employe</option>
-          <option value="ADMIN">Administrateur</option>
-        </select>
-      </div>
-      <div>
-        <button type="button" id="add-employee-form" class="btn btn-danger" (click)="modal.dismiss('cancel click')">
-          Annuler
-        </button>
-        <button type="submit" class="btn btn-primary" (click)="modal.close('Add')">Ajouter un {{newUser.role}}</button>
-      </div>
-    </form>
-  </div>
-</ng-template>
-
-<ng-template #editModal let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-title-edit">Modifier un employé</h4>
-    <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form class="form-group" #formEdit="ngForm" (ngSubmit)="editUser(formEdit)">
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="name-edit" class="sr-only">Nom</label>
-          <input [ngModel]="editNewUser.name"
-                 [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched)}"
-                 #name="ngModel"
-                 name="name" type="text"
-                 class="form-control" id="name-edit" placeholder="Nom">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="firstname-edit" class="sr-only">Prénom</label>
-          <input [ngModel]="editNewUser.firstname"
-                 [ngClass]="{'is-invalid': firstname.invalid && (firstname.dirty || firstname.touched) }"
-                 #firstname="ngModel"
-                 name="firstname" type="text"
-                 class="form-control" id="firstname-edit"
-                 placeholder="Prénom" >
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="sr-only" for="birthday-edit">Date de naissance</label>
-        <input [ngModel]="editNewUser.birthday"
-               name="birthday" id="birthday-edit"
-               type="date" class="form-control" />
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="username-edit" class="sr-only">Nom d'utilisateur</label>
-          <input [ngModel]="editNewUser.username"
-                 [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)  }"
-                 #username="ngModel"
-                 name="username" type="text"
-                 class="form-control" id="username-edit"
-                 placeholder="Nom d'utilisateur" required>
-        </div>
-        <div class="form-group col-md-6">
-          <label for="password-edit" class="sr-only">Mot de passe</label>
-          <input [ngModel]="editNewUser.password"
-                 [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched) }"
-                 #password="ngModel"
-                 name="password" type="text"
-                 class="form-control" id="password-edit"
-                 placeholder="Mot de passe" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="role-edit" class="col-sm-2 col-form-label">Rôle : </label>
-        <select [ngModel]="editNewUser.role"  name="role" id="role-edit" class="form-select col-sm-10">
-          <option value="EMPLOYE">Employe</option>
-          <option value="ADMIN">Administrateur</option>
-        </select>
-      </div>
-      <div>
-        <button type="button" id="edit-employee-form" class="btn btn-danger" (click)="modal.dismiss('cancel click')">
-          Annuler
-        </button>
-        <button type="submit" class="btn btn-primary" (click)="modal.close('Edit')">Modifier {{editNewUser.username}}</button>
-      </div>
-    </form>
-  </div>
-</ng-template>
-
-<ng-template #sure let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-title-suppr">Suppression</h4>
-    <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p><strong>Êtes vous certain de vouloir supprimer le profil de <span class="text-primary">"{{deleteUser.username}}
-      "</span> ?</strong></p>
-    <p>Toutes les informations associés à cet utilisateur seront supprimées.
-      <span class="text-danger">Cette opération est irréversible.</span>
-    </p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Annuler</button>
-    <button type="button" class="btn btn-danger" (click)="modal.close('Remove')">Oui</button>
-  </div>
-</ng-template>

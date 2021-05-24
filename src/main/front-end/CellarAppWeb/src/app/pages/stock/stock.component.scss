@@ -6,3 +6,18 @@
   margin-top: 10px;
 }
 
+#head{
+  padding: 2% 10% ;
+}
+
+#btn-add-bottle {
+  background-color: $interactive-primary-d-1;
+  border-color: $interactive-primary-1;
+  color: white;
+}
+
+#btn-add-bottle:hover {
+  background-color: $interactive-secondary-d-1;
+  border-color: $interactive-secondary;
+  color: white;
+}

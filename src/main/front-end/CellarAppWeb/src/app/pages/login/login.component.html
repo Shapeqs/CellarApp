@@ -1,30 +1,28 @@
-<div class="row justify-content-center align-items-center" style="height:100vh">
-  <div class="card">
-    <div class="card-header text-center">
-      <form class="form-signin" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-        <h2 class="form-signin-heading">Please log in</h2>
-        <div class="form-group">
-          <label for="username" class="sr-only">Username</label>
-          <input id="username" type="text" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && !username.valid }"
-                 name="username" [(ngModel)]="employeCredential.username"
-          #username="ngModel" required placeholder="Username" />
-          <div class="invalid" *ngIf="f.submitted
+<div class="d-flex flex-row justify-content-center align-items-center" style="height:100vh">
+  <form class="form-signin" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+    <h2 class="form-signin-heading" id="headerLogin">Merci de vous identifier</h2>
+    <div class="form-group">
+      <label for="username" class="sr-only">Username</label>
+      <input id="username" type="text" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && !username.valid }"
+             name="username" [(ngModel)]="employeCredential.username"
+             #username="ngModel" required placeholder="Username"/>
+      <div class="invalid" *ngIf="f.submitted
           && !username.valid">Username is required
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="password" class="sr-only">Password</label>
-          <input id="password" type="password" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && !password.valid }"
-                 name="password" [(ngModel)]="employeCredential.password"
-                 #password="ngModel" required placeholder="Password" />
-          <div class="invalid" *ngIf="f.submitted
-          && !password.valid">Password is required
-          </div>
-        </div>
-        <div>
-          <button class="btn btn-lg btn-primary btn-block" [disabled]="authenticated"> {{wording}} </button>
-        </div>
-      </form>
+      </div>
     </div>
-  </div>
+    <div class="form-group">
+      <label for="password" class="sr-only">Password</label>
+      <input id="password" type="password" class="form-control"
+             [ngClass]="{ 'is-invalid': f.submitted && !password.valid }"
+             name="password" [(ngModel)]="employeCredential.password"
+             #password="ngModel" required placeholder="Password"/>
+      <div class="invalid" *ngIf="f.submitted
+          && !password.valid">Password is required
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-lg btn-primary btn-block" [disabled]="authenticated"> {{wording}} </button>
+    </div>
+  </form>
 </div>
+

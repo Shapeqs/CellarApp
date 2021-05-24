@@ -1,8 +1,10 @@
-<div class="header h1">
-  Gestion du stock
+<div class="d-flex justify-content-between" id="head">
+  <div class="header h1">
+    Gestion du stock
+  </div>
+  <button class="btn" id="btn-add-bottle" (click)="openForm()">Ajouter une bouteille</button>
 </div>
-<button class="btn btn-outline-primary" (click)="openForm()">Ajouter une bouteille</button>
-<div class="d-flex flex-row">
+<div class="d-flex flex-row flex-wrap justify-content-center">
   <div *ngFor="let bottle of bottles">
     <app-bottle [bottle]="bottle"></app-bottle>
   </div>
