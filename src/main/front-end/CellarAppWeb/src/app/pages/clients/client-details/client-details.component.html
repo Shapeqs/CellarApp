@@ -15,8 +15,8 @@
         <span>Date d'enregistrement</span><span>{{client.registrationDate | date:'dd/MM/yyyy'}}</span></div>
     </div>
     <div class="d-flex justify-content-between total mt-1 card-footer">
-      <button class="btn btn-modifier">Editer le profil</button>
-      <button class="btn btn-supprimer"> Supprimer le profil</button>
+      <button class="btn btn-modifier" (click)="alertEnCours()">Editer le profil</button>
+      <button class="btn btn-supprimer" (click)="alertEnCours()"> Supprimer le profil</button>
     </div>
     <div class="mt-2 card-body">
       <br>
@@ -30,7 +30,7 @@
     </div>
     <div class="d-flex justify-content-between total mt-1 card-footer">
       <button class="btn btn-add" routerLink="/order-form" [state]="{data:client}" (click)="closeModal()"> Ajouter une commande ?</button>
-      <button class="btn btn-modifier">Voir les commandes</button>
+      <button class="btn btn-modifier" (click)="alertEnCours()">Voir les commandes</button>
     </div>
   </div>
 </div>
@@ -52,8 +52,8 @@
         <span>Date d'enregistrement</span><span>{{client.registrationDate | date:'dd/MM/yyyy'}}</span></div>
     </div>
     <div class="d-flex justify-content-between total mt-1 card-footer">
-      <button class="btn btn-modifier">Editer le profil</button>
-      <button class="btn btn-supprimer"> Supprimer le profil</button>
+      <button class="btn btn-modifier" (click)="alertEnCours()">Editer le profil</button>
+      <button class="btn btn-supprimer" (click)="alertEnCours()"> Supprimer le profil</button>
     </div>
     <div class="mt-2 card-body">
         <br>
@@ -67,7 +67,7 @@
     </div>
     <div class="d-flex justify-content-between total mt-1 card-footer">
       <button class="btn btn-add" routerLink="/order-form" [state]="{data:client}" (click)="closeModal()"> Ajouter une commande</button>
-      <button class="btn btn-modifier">Voir les commandes</button>
+      <button class="btn btn-modifier" (click)="alertEnCours()">Voir les commandes</button>
     </div>
   </div>
 </div>

@@ -1,1 +1,38 @@
-[{"id":0,"name":"Querre","firstname":"Clément","birthday":917856000000,"username":"cquerre","password":"pass","role":"ADMIN"},{"id":1,"name":"Charles","firstname":"Jean","birthday":607766400,"username":"jcharles","password":"password","role":"EMPLOYE"},{"id":2,"name":"Calippe","firstname":"Dawen","birthday":923299200000,"username":"dcalippe","password":"password","role":"ADMIN"},{"id":3,"name":"Ajkdhf","firstname":"Adil","birthday":959731200000,"username":"aaj","password":"pass","role":"EMPLOYE"},{"id":4,"name":null,"firstname":null,"birthday":null,"username":null,"password":null,"role":"EMPLOYE"}]
+[
+  {
+    "id": 0,
+    "name": "Querre",
+    "firstname": "Clément",
+    "birthday": 917856000000,
+    "username": "cquerre",
+    "password": "pass",
+    "role": "ADMIN"
+  },
+  {
+    "id": 1,
+    "name": "Charles",
+    "firstname": "Jean",
+    "birthday": 607766400,
+    "username": "jcharles",
+    "password": "password",
+    "role": "EMPLOYE"
+  },
+  {
+    "id": 2,
+    "name": "Calippe",
+    "firstname": "Dawen",
+    "birthday": 923299200000,
+    "username": "dcalippe",
+    "password": "password",
+    "role": "ADMIN"
+  },
+  {
+    "id": 3,
+    "name": "Mansart",
+    "firstname": "Adil",
+    "birthday": 959731200000,
+    "username": "amansart",
+    "password": "pass",
+    "role": "EMPLOYE"
+  }
+]

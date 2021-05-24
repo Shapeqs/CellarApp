@@ -17,7 +17,7 @@
     <span class="mr-3">Date d'enregistrement</span> <span>{{client.registrationDate | date:'dd/MM/y' }}</span>
     <div class="d-flex justify-content-between total font-weight-bold mt-4 card-footer">
       <button type="button" class="btn btn-modifier" (click)="openEditModal()">Edit</button>
-      <button type="button" class="btn btn-supprimer"  (click)="removeClient(client)">Remove</button>
+      <button type="button" class="btn btn-supprimer"  (click)="openDeleteModal(sure, client)">Remove</button>
     </div>
   </div>
 </div>
@@ -40,7 +40,26 @@
     <span class="mr-3">Date d'enregistrement</span> <span>{{client.registrationDate | date:'dd/MM/y' }}</span>
     <div class="d-flex justify-content-between total font-weight-bold mt-4 card-footer">
       <button type="button" class="btn btn-modifier" (click)="openEditModal()">Edit</button>
-      <button type="button" class="btn btn-supprimer" (click)="removeClient(client)">Remove</button>
+      <button type="button" class="btn btn-supprimer" (click)="openDeleteModal(sure,client)">Remove</button>
     </div>
   </div>
 </div>
+
+<ng-template #sure let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title-suppr">Suppression</h4>
+    <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p><strong>Êtes vous certain de vouloir supprimer le profil de "{{deleteClient.lastName}}" ?</strong></p>
+    <p>Toutes les informations associés à cet utilisateur seront supprimées.
+      <span class="text-primary">Cette opération est irréversible.</span>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-annuler" (click)="modal.dismiss('cancel click')">Annuler</button>
+    <button type="button" class="btn btn-supprimer" (click)="modal.close('Remove')">Oui</button>
+  </div>
+</ng-template>

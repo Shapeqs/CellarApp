@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Client} from "../../../shared/models/client.model";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 
@@ -15,5 +15,9 @@ export class ClientDetailsComponent{
 
   closeModal() {
     this.activeModal.close('Modal Closed');
+  }
+
+  alertEnCours() {
+    alert("Dev en cours");
   }
 }

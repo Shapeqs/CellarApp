@@ -1,7 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, TemplateRef} from '@angular/core';
 import {Client} from "../../../shared/models/client.model";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {BottleDetailsComponent} from "../../../shared/component/bottle/bottle-details/bottle-details.component";
+import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ClientDetailsComponent} from "../client-details/client-details.component";
 import {ClientFormComponent} from "../client-form/client-form.component";
 import {ClientService} from "../../../shared/services/client.service";
@@ -15,6 +14,8 @@ import {Router} from "@angular/router";
 export class ClientCardComponent{
 
   @Input() client : Client
+  private closeResult: string;
+  deleteClient: Client;
 
   constructor(private modalService: NgbModal,private clientService:ClientService,private router: Router) { }
 
@@ -50,5 +51,28 @@ export class ClientCardComponent{
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
       this.router.navigate([currentUrl]);
     });
+  }
+
+  openDeleteModal(sure: TemplateRef<any>, client: Client) {
+    this.deleteClient = client;
+    this.modalService.open(sure, {ariaLabelledBy: 'modal-basic-title',
+      backdropClass: 'light-blue-backdrop'}).result.then((result) => {
+      if (result === 'Remove')  {
+        this.removeClient(this.deleteClient);
+      }
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any) {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }
