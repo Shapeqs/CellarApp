@@ -1,6 +1,5 @@
 package com.exemple.CellarApp.Repository.User;
 
-import com.exemple.CellarApp.CellarAppApplication;
 import com.exemple.CellarApp.DTO.UserDTO;
 import com.exemple.CellarApp.EnumUtils.URLs;
 import com.exemple.CellarApp.Security.UserRoles;
@@ -8,8 +7,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
@@ -21,11 +18,14 @@ import java.util.List;
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
+    /**
+     * Le logger de la classe
+     */
     private final Logger LOGGER = LoggerFactory.getLogger(UserRepositoryImpl.class);
+    /**
+     * Le mapper pour transformer les entités en json
+     */
     private final ObjectMapper mapper = new ObjectMapper();
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     @Override
     public List<UserDTO> findAll() {
@@ -41,6 +41,7 @@ public class UserRepositoryImpl implements UserRepository {
         return listEmploye;
     }
 
+    @Override
     public UserDTO findById(Integer id) {
         List<UserDTO> employes = findAll();
         for (UserDTO employe : employes) {
@@ -51,6 +52,7 @@ public class UserRepositoryImpl implements UserRepository {
         return null;
     }
 
+    @Override
     public UserDTO findByUsername(String username) {
         List<UserDTO> employes = findAll();
         for (UserDTO employe : employes) {
@@ -61,6 +63,7 @@ public class UserRepositoryImpl implements UserRepository {
         return null;
     }
 
+    @Override
     public void addNew(UserDTO employe) {
         List<UserDTO> list = findAll();
         if (!list.isEmpty()) {
@@ -77,6 +80,7 @@ public class UserRepositoryImpl implements UserRepository {
         }
     }
 
+    @Override
     public void modify(Integer id, UserDTO employe) {
         List<UserDTO> list = findAll();
         if (!list.isEmpty()) {
@@ -102,6 +106,7 @@ public class UserRepositoryImpl implements UserRepository {
         }
     }
 
+    @Override
     public void deleteById(Integer id) {
         List<UserDTO> employes = findAll();
         employes.removeIf(c -> c.getId().equals(id));
@@ -112,6 +117,7 @@ public class UserRepositoryImpl implements UserRepository {
         }
     }
 
+    @Override
     public void deleteAll() {
         List<UserDTO> employes = findAll();
         employes.removeIf(c -> c.getRole().equals(UserRoles.EMPLOYE.name()));

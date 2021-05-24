@@ -15,8 +15,14 @@ import java.util.List;
 @Service
 public class UserServiceImp implements UserService {
 
+    /**
+     * Le logger de la classe
+     */
     private Logger LOGGER = LoggerFactory.getLogger(BottleServiceImpl.class);
 
+    /**
+     * Le repository des utilisateurs
+     */
     @Autowired
     private UserRepository userRepository;
 

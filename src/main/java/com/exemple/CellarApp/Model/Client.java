@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Entité Client représentant un client
+ */
 @Entity
 public class Client implements Serializable {
     @Id

@@ -61,6 +61,12 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.modify(id, transformEntitytoDTO(o));
     }
 
+    /**
+     * Methode transformant une commande DTO en entité commande
+     *
+     * @param orderDTO la commande à transformer
+     * @return l'entité transformée
+     */
     private Order transformDTOtoEntity(OrderDTO orderDTO) {
         Order o = new Order();
         o.setId(orderDTO.getId());
@@ -74,6 +80,12 @@ public class OrderServiceImpl implements OrderService {
         return o;
     }
 
+    /**
+     * Methode transformant une entité commande en commande DTO
+     *
+     * @param order la commande à transformer
+     * @return l'entité transformée en DTO
+     */
     private OrderDTO transformEntitytoDTO(Order order) {
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setId(order.getId());

@@ -16,14 +16,26 @@ import java.util.List;
 @Service
 public class BottleServiceImpl implements BottleService {
 
+    /**
+     * Le logger de la classe
+     */
     private Logger LOGGER = LoggerFactory.getLogger(BottleServiceImpl.class);
 
+    /**
+     * Le repository des bouteilles
+     */
     @Autowired
     private BottleRepository bottleRepository;
 
+    /**
+     * Le service des chateaux
+     */
     @Autowired
     private CastelService castelService;
 
+    /**
+     * Le service des appelations
+     */
     @Autowired
     private NamingService namingService;
 
@@ -64,6 +76,12 @@ public class BottleServiceImpl implements BottleService {
         bottleRepository.modify(id, transformEntitytoDTO(b));
     }
 
+    /**
+     * Methode transformant une bouteille DTO en entité bouteille
+     *
+     * @param bottleDTO la bouteille à transformer
+     * @return l'entité transformée
+     */
     private Bottle transformDTOtoEntity(BottleDTO bottleDTO) {
         Bottle b = new Bottle();
         b.setId(bottleDTO.getId());
@@ -79,6 +97,12 @@ public class BottleServiceImpl implements BottleService {
         return b;
     }
 
+    /**
+     * Methode transformant une entité bouteille en bouteille DTO
+     *
+     * @param bottle la bouteille à transformer
+     * @return l'entité transformée en DTO
+     */
     private BottleDTO transformEntitytoDTO(Bottle bottle) {
         return new BottleDTO(bottle.getId(),
                 bottle.getVintage(), bottle.getPrice(),

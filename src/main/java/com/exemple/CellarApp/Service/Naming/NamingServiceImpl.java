@@ -14,8 +14,14 @@ import java.util.List;
 @Service
 public class NamingServiceImpl implements NamingService {
 
+    /**
+     * Le logger de la classe
+     */
     private Logger LOGGER = LoggerFactory.getLogger(NamingServiceImpl.class);
 
+    /**
+     * Le repository des appelations
+     */
     @Autowired
     private NamingRepository namingRepository;
 
@@ -23,14 +29,14 @@ public class NamingServiceImpl implements NamingService {
     public List<Naming> findAll(){
         ArrayList<Naming> namings = new ArrayList<>();
         for (NamingDTO n : namingRepository.findAll()) {
-            namings.add(transformDAOtoEntity(n));
+            namings.add(transformDTOtoEntity(n));
         }
         return namings;
     }
 
     @Override
     public Naming findOne(Integer id) {
-        return transformDAOtoEntity(namingRepository.findById(id));
+        return transformDTOtoEntity(namingRepository.findById(id));
     }
 
     @Override
@@ -46,29 +52,41 @@ public class NamingServiceImpl implements NamingService {
 
     @Override
     public void addOne(Naming n){
-        namingRepository.addNew(transformEntityToDAO(n));
+        namingRepository.addNew(transformEntityToDTO(n));
     }
 
     @Override
     public void modifyOne(Integer id, Naming n){
         Naming naming = new Naming();
         naming.setName(n.getName());
-        namingRepository.modify(id, transformEntityToDAO(naming));
+        namingRepository.modify(id, transformEntityToDTO(naming));
     }
 
     @Override
     public Naming findByName(String name) {
-        return transformDAOtoEntity(namingRepository.findByName(name));
+        return transformDTOtoEntity(namingRepository.findByName(name));
     }
 
-    private Naming transformDAOtoEntity(NamingDTO namingDTO) {
+    /**
+     * Methode transformant une appelation DTO en entité appelation
+     *
+     * @param namingDTO l'appelation à transformer
+     * @return l'entité transformée
+     */
+    private Naming transformDTOtoEntity(NamingDTO namingDTO) {
         Naming n = new Naming();
         n.setId(namingDTO.getId());
         n.setName(namingDTO.getName());
         return n;
     }
 
-    private NamingDTO transformEntityToDAO(Naming naming) {
+    /**
+     * Methode transformant une entité appelation en appelation DTO
+     *
+     * @param naming l'appelation à transformer
+     * @return l'entité transformée en DTO
+     */
+    private NamingDTO transformEntityToDTO(Naming naming) {
         return new NamingDTO(naming.getId(), naming.getName());
     }
 

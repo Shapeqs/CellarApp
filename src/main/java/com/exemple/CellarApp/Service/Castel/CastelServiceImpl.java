@@ -14,8 +14,15 @@ import java.util.List;
 @Service
 public class CastelServiceImpl implements CastelService {
 
+    /**
+     * Le logger de la classe
+     */
     private Logger LOGGER = LoggerFactory.getLogger(CastelServiceImpl.class);
 
+
+    /**
+     * Le repository de chateau
+     */
     @Autowired
     private CastelRepository castelRepository;
 
@@ -23,19 +30,19 @@ public class CastelServiceImpl implements CastelService {
     public List<Castel> findAll(){
         ArrayList<Castel> castels = new ArrayList<>();
         for (CastelDTO c : castelRepository.findAll()) {
-            castels.add(transformDAOtoEntity(c));
+            castels.add(transformDTOtoEntity(c));
         }
         return castels;
     }
 
     @Override
     public Castel findOne(Integer id) {
-        return transformDAOtoEntity(castelRepository.findById(id));
+        return transformDTOtoEntity(castelRepository.findById(id));
     }
 
     @Override
     public Castel findByName(String name) {
-        return transformDAOtoEntity(castelRepository.findByName(name));
+        return transformDTOtoEntity(castelRepository.findByName(name));
     }
 
     @Override
@@ -51,24 +58,36 @@ public class CastelServiceImpl implements CastelService {
 
     @Override
     public void addOne(Castel c){
-        castelRepository.addNew(transformEntityToDAO(c));
+        castelRepository.addNew(transformEntityToDTO(c));
     }
 
     @Override
     public void modifyOne(Integer id, Castel c){
         Castel castel = new Castel();
         castel.setName(c.getName());
-        castelRepository.modify(id, transformEntityToDAO(castel));
+        castelRepository.modify(id, transformEntityToDTO(castel));
     }
 
-    private Castel transformDAOtoEntity(CastelDTO castelDTO) {
+    /**
+     * Methode transformant un chateau DTO en entité chateau
+     *
+     * @param castelDTO le chateau à transformer
+     * @return l'entité transformée
+     */
+    private Castel transformDTOtoEntity(CastelDTO castelDTO) {
         Castel c = new Castel();
         c.setId(castelDTO.getId());
         c.setName(castelDTO.getName());
         return c;
     }
 
-    private CastelDTO transformEntityToDAO(Castel castel) {
+    /**
+     * Methode transformant une entité chateau en chateau DTO
+     *
+     * @param castel la bouteille à transformer
+     * @return l'entité transformée en DTO
+     */
+    private CastelDTO transformEntityToDTO(Castel castel) {
         return new CastelDTO(castel.getId(), castel.getName());
     }
 

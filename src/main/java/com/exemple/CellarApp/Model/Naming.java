@@ -6,6 +6,9 @@ import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Entité Naming représentant une appelation
+ */
 @Entity
 public class Naming implements Serializable {
     @Id

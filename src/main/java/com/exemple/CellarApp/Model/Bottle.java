@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
+/**
+ * Entité Bottle représentant une bouteille
+ */
 @Entity
 public class Bottle implements Serializable {
     @Id

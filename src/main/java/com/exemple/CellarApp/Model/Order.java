@@ -7,6 +7,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 
+/**
+ * Entité Order représentant une commande
+ */
 @Entity
 public class Order implements Serializable {
     @Id

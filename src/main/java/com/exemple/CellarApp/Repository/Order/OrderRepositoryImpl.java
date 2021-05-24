@@ -18,14 +18,21 @@ import java.util.List;
 @Repository
 public class OrderRepositoryImpl implements OrderRepository {
 
+    /**
+     * Le logger de la classe
+     */
     private Logger LOGGER = LoggerFactory.getLogger(OrderRepositoryImpl.class);
+    /**
+     * Le mapper pour transformer les entités en json
+     */
     private ObjectMapper mapper = new ObjectMapper();
 
     @Override
     public List<OrderDTO> findAll() {
         List<OrderDTO> listOrder = new ArrayList<>();
         try {
-            listOrder = mapper.readValue(new URL("file:" + URLs.Order.url), new TypeReference<>(){});
+            listOrder = mapper.readValue(new URL("file:" + URLs.Order.url), new TypeReference<>() {
+            });
         } catch (IOException e) {
             LOGGER.error(e.getMessage());
         }
@@ -44,15 +51,15 @@ public class OrderRepositoryImpl implements OrderRepository {
     @Override
     public void addNew(OrderDTO orderDTO) {
         List<OrderDTO> listOrder = findAll();
-        if(!listOrder.isEmpty()) {
-            orderDTO.setId(listOrder.get(listOrder.size()-1).getId() + 1);
+        if (!listOrder.isEmpty()) {
+            orderDTO.setId(listOrder.get(listOrder.size() - 1).getId() + 1);
         } else {
             orderDTO.setId(0);
         }
         listOrder.add(orderDTO);
         try {
             mapper.writeValue(new File(URLs.Order.url), listOrder);
-        }catch (IOException e) {
+        } catch (IOException e) {
             LOGGER.error(e.getMessage());
         }
     }

@@ -18,7 +18,13 @@ import java.util.List;
 @Repository
 public class ClientRepositoryImpl implements ClientRepository{
 
+    /**
+     * Le logger de la classe
+     */
     private Logger LOGGER = LoggerFactory.getLogger(ClientRepositoryImpl.class);
+    /**
+     * Le mapper pour transformer les entités en json
+     */
     private ObjectMapper mapper = new ObjectMapper();
 
     @Override

@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 
+/**
+ * Entité Castel représentant un chateau
+ */
 @Entity
 public class Castel implements Serializable {
     @Id

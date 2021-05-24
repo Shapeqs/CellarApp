@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import java.sql.Date;
 import java.util.Collection;
 
+/**
+ * Entité User représentant un utilisateur
+ */
 @Entity
 public class User implements UserDetails {
     @Id

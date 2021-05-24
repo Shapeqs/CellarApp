@@ -12,12 +12,14 @@ public interface BottleService {
 
     /**
      * Méthode qui trouve l'ensemble des bouteilles
+     *
      * @return l'ensemble des entités Bottle qui se trouve dans le repository
      */
     List<Bottle> findAll();
 
     /**
      * Methode trouve la bouteille depuis son identifiant
+     *
      * @param id l'identifiant de la bouteille
      * @return la bouteille trouvé depuis le repository ou null sinon
      */
@@ -25,6 +27,7 @@ public interface BottleService {
 
     /**
      * Methode supprimant dans le repository la bouteille depuis son identifiant
+     *
      * @param id l'identifiant de la bouteille
      */
     void deleteOne(Integer id);
@@ -36,14 +39,16 @@ public interface BottleService {
 
     /**
      * Methode ajoutant la bouteille en paramètre dans le repository
+     *
      * @param b la bouteille à ajouter
      */
     void addOne(Bottle b);
 
     /**
      * Methode remplaçant la bouteille d'identifiant id avec la bouteille en paramètre dans le repository
+     *
      * @param id l'identifiant de la bouteille à modifier
-     * @param b la bouteille modifié
+     * @param b  la bouteille modifié
      */
     void modifyOne(Integer id, Bottle b);
 

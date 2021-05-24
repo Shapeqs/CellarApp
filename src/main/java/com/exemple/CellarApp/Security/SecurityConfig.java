@@ -19,19 +19,36 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Configuration de la securité sur les requêtes
+ */
 @Configuration
 @EnableWebSecurity()
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /**
+     * Le logger de classe
+     */
     private final Logger LOGGER = LoggerFactory.getLogger(SecurityConfig.class);
 
+    /**
+     * L'encodeur de mot de passe
+     */
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    /**
+     * Le service utilisateur pour retrouver les utilisateurs
+     */
     @Autowired
     public UserService userService;
 
+    /**
+     * Configuration des requêtes autorisées
+     * @param http les requêtes
+     * @throws Exception n'importe quelle exceptions possibles
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -52,6 +69,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic();
     }
 
+    /**
+     * Methode ajoutant tous les utilisateurs dans l'application
+     *
+     * @return le service des détails des utilisateurs
+     */
     @Override
     @Bean
     protected UserDetailsService userDetailsService() {

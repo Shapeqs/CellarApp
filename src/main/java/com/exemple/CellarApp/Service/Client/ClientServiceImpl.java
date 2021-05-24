@@ -12,6 +12,9 @@ import java.util.List;
 @Service
 public class ClientServiceImpl implements ClientService {
 
+    /**
+     * Le repository client
+     */
     @Autowired
     private ClientRepository clientRepository;
 
@@ -19,14 +22,14 @@ public class ClientServiceImpl implements ClientService {
     public List<Client> findAll() {
         ArrayList<Client> clients = new ArrayList<>();
         for (ClientDTO client : this.clientRepository.findAll()) {
-            clients.add(transformDAOtoEntity(client));
+            clients.add(transformDTOtoEntity(client));
         }
         return clients;
     }
 
     @Override
     public Client findOne(Integer id) {
-        return transformDAOtoEntity(clientRepository.findById(id));
+        return transformDTOtoEntity(clientRepository.findById(id));
     }
 
 
@@ -50,7 +53,13 @@ public class ClientServiceImpl implements ClientService {
         clientRepository.modify(id, transformEntitytoDTO(c));
     }
 
-    private Client transformDAOtoEntity(ClientDTO clientDTO) {
+    /**
+     * Methode transformant un client DTO en entité client
+     *
+     * @param clientDTO le client à transformer
+     * @return l'entité transformée
+     */
+    private Client transformDTOtoEntity(ClientDTO clientDTO) {
         Client client = new Client();
         client.setId(clientDTO.getId());
         client.setFirstName(clientDTO.getFirstName());
@@ -64,6 +73,12 @@ public class ClientServiceImpl implements ClientService {
         return client;
     }
 
+    /**
+     * Methode transformant une entité client en client DTO
+     *
+     * @param client le client à transformer
+     * @return l'entité transformée en DTO
+     */
     private ClientDTO transformEntitytoDTO(Client client) {
         ClientDTO clientDTO = new ClientDTO();
         clientDTO.setId(client.getId());

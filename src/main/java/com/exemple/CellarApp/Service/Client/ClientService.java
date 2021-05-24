@@ -9,12 +9,14 @@ import java.util.List;
 public interface ClientService {
     /**
      * Méthode qui trouve l'ensemble des clients
+     *
      * @return l'ensemble des entités Client qui se trouve dans le repository
      */
     List<Client> findAll();
 
     /**
      * Methode trouve le client depuis son identifiant
+     *
      * @param id l'identifiant du client
      * @return le client trouvé depuis le repository ou null sinon
      */
@@ -22,6 +24,7 @@ public interface ClientService {
 
     /**
      * Methode supprimant dans le repository le client depuis son identifiant
+     *
      * @param id l'identifiant du client
      */
     void deleteOne(Integer id);
@@ -33,14 +36,16 @@ public interface ClientService {
 
     /**
      * Methode ajoutant le client en paramètre dans le repository
+     *
      * @param c le client à ajouter
      */
     void addOne(Client c);
 
     /**
      * Methode remplaçant le client d'identifiant id avec le client en paramètre dans le repository
+     *
      * @param id l'identifiant du client à modifier
-     * @param c le client modifié
+     * @param c  le client modifié
      */
     void modifyOne(Integer id, Client c);
 }
