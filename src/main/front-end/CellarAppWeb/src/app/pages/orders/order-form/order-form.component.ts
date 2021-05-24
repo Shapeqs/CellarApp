@@ -41,7 +41,6 @@ export class OrderFormComponent implements OnInit {
   }
 
   addBasket(addToBasket: NgForm, bottle: Bottle) {
-    console.log(addToBasket.value.quantity);
     if(this.basket.get(bottle)===undefined){
       this.basket.set(bottle, Number(addToBasket.value.quantity));
     }else{
@@ -71,11 +70,11 @@ export class OrderFormComponent implements OnInit {
   saveOrder() {
     let order = new Order();
     order.client = this.client;
-    order.listBottles = this.basket;
+    order.listBottles = this.basket.entries;
     order.orderDate = new Date();
     console.log(order);
-    this.orderService.addOrder(order).subscribe((response:Order) =>{
+    /*this.orderService.addOrder(order).subscribe((response:Order) =>{
       console.log(response);
-    });
+    });*/
   }
 }
