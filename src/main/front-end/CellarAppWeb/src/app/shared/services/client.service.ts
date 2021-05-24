@@ -5,6 +5,7 @@ import {environment} from "../../../environments/environment";
 import {Client} from "../models/client.model";
 import {LoginService} from "./login.service";
 import {Bottle} from "../models/bottle.model";
+import {User} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +44,15 @@ export class ClientService {
       })
     };
     return this.http.put<Client>(environment.apiUrls.clients + result.id, body, httpOptions);
+  }
+
+  public deleteOne(client:Client) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + sessionStorage.getItem(LoginService.CURRENT_USER_KEY)
+      })
+    }
+    return this.http.delete<void>(environment.apiUrls.clients + client.id, httpOptions);
   }
 }

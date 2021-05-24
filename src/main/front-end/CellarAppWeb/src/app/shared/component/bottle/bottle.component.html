@@ -17,7 +17,7 @@
     <div *ngIf="displayButton" class="d-flex justify-content-between total font-weight-bold mt-4 card-footer">
       <span [hidden]="authentification">Quantité</span><span [hidden]="authentification">{{bottle.quantity}}</span>
       <button [hidden]="!authentification" type="button" class="btn btn-modifier" (click)="openEditModal()">Edit</button>
-      <button [hidden]="!authentification" type="button" class="btn btn-supprimer">Remove</button>
+      <button [hidden]="!authentification" type="button" class="btn btn-supprimer" (click)="removeBottle(bottle)">Remove</button>
     </div>
   </div>
 </div>

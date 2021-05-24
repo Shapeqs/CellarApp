@@ -5,6 +5,7 @@ import {BottleDetailsComponent} from "../../../shared/component/bottle/bottle-de
 import {ClientDetailsComponent} from "../client-details/client-details.component";
 import {ClientFormComponent} from "../client-form/client-form.component";
 import {ClientService} from "../../../shared/services/client.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-client-card',
@@ -15,7 +16,7 @@ export class ClientCardComponent{
 
   @Input() client : Client
 
-  constructor(private modalService: NgbModal,private clientService:ClientService) { }
+  constructor(private modalService: NgbModal,private clientService:ClientService,private router: Router) { }
 
   openDetailModal() {
     if(this.modalService.hasOpenModals() == false){
@@ -40,6 +41,14 @@ export class ClientCardComponent{
 
   private updateClient(result: Client) {
     this.clientService.updateClient(result).subscribe((response:Client) =>{
+    });
+  }
+
+  removeClient(clientToRemove:Client) {
+    this.clientService.deleteOne(clientToRemove).subscribe();
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([currentUrl]);
     });
   }
 }

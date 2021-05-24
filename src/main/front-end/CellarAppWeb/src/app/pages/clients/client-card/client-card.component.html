@@ -17,7 +17,7 @@
     <span class="mr-3">Date d'enregistrement</span> <span>{{client.registrationDate | date:'dd/MM/y' }}</span>
     <div class="d-flex justify-content-between total font-weight-bold mt-4 card-footer">
       <button type="button" class="btn btn-modifier" (click)="openEditModal()">Edit</button>
-      <button type="button" class="btn btn-supprimer">Remove</button>
+      <button type="button" class="btn btn-supprimer"  (click)="removeClient(client)">Remove</button>
     </div>
   </div>
 </div>
@@ -40,7 +40,7 @@
     <span class="mr-3">Date d'enregistrement</span> <span>{{client.registrationDate | date:'dd/MM/y' }}</span>
     <div class="d-flex justify-content-between total font-weight-bold mt-4 card-footer">
       <button type="button" class="btn btn-modifier" (click)="openEditModal()">Edit</button>
-      <button type="button" class="btn btn-supprimer">Remove</button>
+      <button type="button" class="btn btn-supprimer" (click)="removeClient(client)">Remove</button>
     </div>
   </div>
 </div>

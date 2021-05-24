@@ -5,6 +5,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {BottleDetailsComponent} from "./bottle-details/bottle-details.component";
 import {BottleFormComponent} from "./bottle-form/bottle-form.component";
 import {BottleService} from "../../services/bottle.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-bottle',
@@ -19,7 +20,7 @@ export class BottleComponent implements OnInit{
 
   url:string = environment.apiUrls.images;
 
-  constructor(private modalService: NgbModal, private bottleService:BottleService) {
+  constructor(private modalService: NgbModal, private bottleService:BottleService,private router: Router) {
   }
 
   openDetailModal() {
@@ -58,5 +59,13 @@ export class BottleComponent implements OnInit{
     if(this.displayButton===undefined){
       this.displayButton = true;
     }
+  }
+
+  removeBottle(bottle: Bottle) {
+    this.bottleService.deleteOne(bottle).subscribe();
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }
