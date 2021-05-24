@@ -1,11 +1,17 @@
-<div class="header h1">
-  Gestion des clients
+<div class="d-flex justify-content-between" id="head">
+  <div class="header h1">
+    Gestion des clients
+  </div>
+  <div>
+    <label for="searchBar" class="h5">Rechercher : </label>
+    <input id="searchBar" placeholder="Entrez un nom" class="form-control" type="text" name="search" autocomplete="off" [(ngModel)]="searchText">
+  </div>
+  <button id="btn-add-bottle" [hidden]="!authenticated" class="btn btn-outline-primary" (click)="openForm()">Ajouter un client</button>
 </div>
 <div>
-  <button class="btn btn-outline-primary" (click)="openForm()">Ajouter un client</button>
 </div>
-<div class="d-flex flex-row">
-  <div *ngFor="let client of clients">
+<div class="d-flex flex-row flex-wrap justify-content-center">
+  <div *ngFor="let client of clients | filter:searchText">
     <app-client-card [client]="client"></app-client-card>
   </div>
 </div>

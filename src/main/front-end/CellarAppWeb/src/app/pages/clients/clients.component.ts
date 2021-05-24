@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ClientFormComponent} from "./client-form/client-form.component";
-import {Bottle} from "../../shared/models/bottle.model";
+import {LoginService} from "../../shared/services/login.service";
 
 @Component({
   selector: 'app-clients',
@@ -17,12 +17,17 @@ export class ClientsComponent implements OnInit {
   clients$ : Observable<Client[]> = this.clientService.getClients();
   clients:Client[];
   clientToAdd:Client;
+  authenticated:boolean;
+  searchText: string;
 
-  constructor(private clientService:ClientService,private modalService: NgbModal) { }
+  constructor(private clientService:ClientService,private modalService: NgbModal, private loginService:LoginService) { }
 
   ngOnInit(): void {
     this.clientToAdd = new Client();
     this.getClients();
+    this.loginService.authenticated.subscribe(
+      auth => this.authenticated = auth
+    );
   }
 
   openForm() {
